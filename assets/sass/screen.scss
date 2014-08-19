@@ -7,14 +7,14 @@
 
 @import "compass/reset";
 
-$header_primary_text_color: #fff;
+$header_primary_text_color: #000;
 $header_secondary_text_color: #6f6f6f;
 $link_color: #2ba6cb;
 $body_primary_text_color: #000;
 $button_text_color: #1d1d1d;
 $button_blue: #2BA6CB;
 $link_pink: #ff4466;
-$activity_color: #ffeaa6;
+$activity_color: #333;
 $light_gray: #dadada;
 
 $font: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -223,7 +223,6 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 }
 
 #cacap-header {
-	background: transparent url('../images/black_linen_v2.png');
 	padding: 0 10px 30px;
 	box-shadow: 0 12px 12px -6px #000;
 
