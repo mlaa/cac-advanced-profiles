@@ -62,18 +62,20 @@ window.wp = window.wp || {};
 		 * Set up the sticky header.
 		 */
 		function init_stickyheader() {
-			if ( $( 'body' ).hasClass( 'short-header' ) ) {
-				return;
-			}
-
-			window_height = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-
-			if ( window_height < $(document).height() - 200 ) {
-				$('.cacap-hero-row').waypoint('sticky', {
-					offset: 10,
-					wrapper: '<div class="cacap-hero-row-sticky" />'
-				} );
-			}
+/*
+ *                        if ( $( 'body' ).hasClass( 'short-header' ) ) {
+ *                                return;
+ *                        }
+ *
+ *                        window_height = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+ *
+ *                        if ( window_height < $(document).height() - 200 ) {
+ *                                $('.cacap-hero-row').waypoint('sticky', {
+ *                                        offset: 10,
+ *                                        wrapper: '<div class="cacap-hero-row-sticky" />'
+ *                                } );
+ *                        }
+ */
 		}
 
 		/**
