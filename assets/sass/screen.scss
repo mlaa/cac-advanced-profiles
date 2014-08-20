@@ -66,7 +66,6 @@ body.cacap input[type="button"],
 body.cacap input[type="submit"] {
 	background: none repeat scroll 0 0 $button_blue;
 	border: 1px solid #1E728C;
-	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
 	color: #FFFFFF;
 	cursor: pointer;
 	display: inline-block;
@@ -129,7 +128,6 @@ body.cacap #cacap-header .cacap-hero-row .cacap-edit-buttons {
 		background: -o-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Opera11.10+ */
 		background: -ms-linear-gradient(top, #ffffff 0%,#ededed 100%); /* IE10+ */
 		border: 1px solid #ccc;
-		box-shadow: none;
 		border-radius: 3px;
 		color: #1d1d1d;
 		font-size: 12px;
@@ -153,7 +151,6 @@ body.cacap .cacap-edit-buttons {
 		background: -o-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Opera11.10+ */
 		background: -ms-linear-gradient(top, #ffffff 0%,#ededed 100%); /* IE10+ */
 		border: 1px solid #ccc;
-		box-shadow: none;
 		border-radius: 3px;
 		color: #1d1d1d;
 		font-size: 12px;
@@ -224,7 +221,6 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 
 #cacap-header {
 	padding: 0 10px 30px;
-	box-shadow: 0 12px 12px -6px #000;
 
 	* {
 		color: $header_primary_text_color;
@@ -431,7 +427,6 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 			margin-bottom: 12px;
 			width: 100%;
 			border-radius: 2px 2px 2px 2px;
-			box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset;
 		}
 
 		input[type="text"] {
@@ -543,6 +538,7 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 	text-transform: uppercase;
 	font-size: 2em;
 	font-weight: 900;
+	line-height: 1em; 
 }
 
 .cacap-widget-content {
@@ -792,13 +788,11 @@ body.profile-edit {
 					li {
 						margin-bottom: 14px;
 						border: 1px solid $light_gray;
-						box-shadow: -2px 2px 4px 1px #aaa;
 						position: relative;
 					}
 
 					li.ui-state-highlight {
 						outline: 1px dashed $light_gray;
-						box-shadow: none;
 						height: 110px;
 					}
 
@@ -1059,3 +1053,10 @@ body.cacap .cacap-widget-content .hallotoolbar {
 		margin-bottom: 8px;
 	}
 }
+
+/* MLA Modifications */ 
+/* Dont' show footer with contact, FAQ, etc. */ 
+.footer-widgets { 
+	display: none; 
+} 
+
