@@ -220,7 +220,7 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 }
 
 #cacap-header {
-	padding: 0 10px 30px;
+	padding: 0 10px 0;
 
 	* {
 		color: $header_primary_text_color;
@@ -402,15 +402,12 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 		& > dt,
 		& > dd {
 			display: block;
-			padding: 7px 10px 7px 5px;
-			margin: 0 10px 15px 0;
 		}
 
 		dt {
-			width: $col_width_narrow;
+			width: $col_width_onethird;
 			float: left;
-			border-right: 1px solid $header_primary_text_color;
-			margin-right: 20px;
+			margin-bottom: 20px; 
 		}
 
 		dd {
@@ -525,14 +522,14 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 }
 
 #cacap-body {
-	padding: 50px 0 100px 0;
+	padding: 0 0 100px 0;
 }
 
 .cacap-widget {
 	margin-bottom: 20px;
 }
 
-.cacap-widget-title {
+.cacap-widget-title, #cacap-vitals dt {
 	width: $col_width_onethird;
 	float: left;
 	text-transform: uppercase;
