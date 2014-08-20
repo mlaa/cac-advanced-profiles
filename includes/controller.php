@@ -90,7 +90,7 @@ class CACAP_Controller {
 	 * CACAP hijacks the entire top-level template, including header, sidebar, etc
 	 */
 	public function filter_top_level_template( $template ) {
-		if ( ! bp_displayed_user_id() ) {
+		if ( ! ( bp_displayed_user_id() && bp_is_current_component( 'profile' ) ) ) {
 			return $template;
 		}
 
