@@ -92,7 +92,7 @@ class CACAP_Controller {
 	public function filter_top_level_template( $template ) {
 		if ( ! ( bp_displayed_user_id() && bp_is_current_component( 'profile' ) ) ) {
 			return $template;
-		}
+	}
 
 		$template = $this->locate_top_level_template();
 
