@@ -26,17 +26,23 @@
 		</div>
 
 		<div class="cacap-avatar">
-			<?php bp_displayed_user_avatar( array(
-				'type' => 'full',
-				'width' => '130px',
-				'height' => '130px',
-			) ) ?>
-
 			<?php if ( bp_is_my_profile() ) : ?>
-				<div id="change-avatar-button" class="generic-button">
-					<a href="<?php echo bp_displayed_user_domain() ?>profile/change-avatar">Change Avatar</a>
-				</div>
+				<a href="<?php echo bp_displayed_user_domain() ?>profile/change-avatar">
+				<?php bp_displayed_user_avatar( array(
+					'type' => 'full',
+					'width' => '130px',
+					'height' => '130px',
+				) ) ?>
+				</a>
+			<?php else: ?> 
+				<?php bp_displayed_user_avatar( array(
+					'type' => 'full',
+					'width' => '130px',
+					'height' => '130px',
+				) ) ?>
+				</a>
 			<?php endif ?>
+
 		</div>
 	</div>
 
