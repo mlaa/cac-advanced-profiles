@@ -11,13 +11,7 @@
  */
 ?>
 
-<?php /* @todo Call a real header template? Which? */ ?>
-
-<head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title><?php wp_title( '|', true, 'right' ); ?> CUNY Academic Commons</title>
-	<?php wp_head() ?>
-</head>
+<?php locate_template( 'templates/parts/header-head.php', true ); ?> 
 
 <body <?php body_class() ?>>
 
