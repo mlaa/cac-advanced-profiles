@@ -7,7 +7,7 @@
 
 @import "compass/reset";
 
-$header_primary_text_color: #000;
+$header_primary_text_color: #333;
 $header_secondary_text_color: #6f6f6f;
 $link_color: #2ba6cb;
 $body_primary_text_color: #000;
@@ -17,7 +17,7 @@ $link_pink: #ff4466;
 $activity_color: #333;
 $light_gray: #dadada;
 
-$font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font: proxima-nova, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 $col_width_threequarters: 75%;
 $col_width_onequarter: 25%;
@@ -47,6 +47,7 @@ h1, h2, h3, h4, h5, h6 {
 p {
 	line-height: 1.6em;
 	margin-bottom: 17px;
+	font-family: $font; 
 }
 
 a {
@@ -112,6 +113,7 @@ body.cacap, body.bp-user {
 
 	h1 {
 		font-size: 44px;
+		margin-bottom: 0.2em; 
 	}
 
 	h4 {
@@ -334,11 +336,6 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 	.cacap-avatar {
 		width: 130px;
 		float: right !important;
-
-		& > * {
-			margin-bottom: 1em;
-		}
-
 	}
 
 	.cacap-avatar-buttons-row {
@@ -348,6 +345,14 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 	.cacap-avatar-buttons {
 		float: right;
 		width: 130px;
+		&.mini a { 
+			font-size: 0; /* no text */ 
+			padding: 7px; 
+			&:before { 
+				/* Big icons. Has to be in px. */ 
+				font-size: 22px; 
+			} 
+		} 
 	}
 
 	.activity {
