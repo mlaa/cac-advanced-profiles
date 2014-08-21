@@ -3,16 +3,18 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
+/* test comment */ 
+
 @import "compass/reset";
 
-$header_primary_text_color: #fff;
+$header_primary_text_color: #000;
 $header_secondary_text_color: #6f6f6f;
 $link_color: #2ba6cb;
 $body_primary_text_color: #000;
 $button_text_color: #1d1d1d;
 $button_blue: #2BA6CB;
 $link_pink: #ff4466;
-$activity_color: #ffeaa6;
+$activity_color: #333;
 $light_gray: #dadada;
 
 $font: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -59,41 +61,48 @@ body.js .hide-if-js {
 	display: none;
 }
 
-body.cacap .button,
-body.cacap input[type="button"],
-body.cacap input[type="submit"] {
-	background: none repeat scroll 0 0 $button_blue;
-	border: 1px solid #1E728C;
-	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
-	color: #FFFFFF;
-	cursor: pointer;
-	display: inline-block;
-	font-family: inherit;
-	font-size: 12px;
-	font-weight: 400;
-	line-height: 16px;
-	margin: 0;
-	padding: 4px 10px;
-	position: relative;
-	text-align: center;
-	text-decoration: none;
-	text-transform: none;
-	transition: background-color 0.15s ease-in-out 0s;
-	width: auto;
-
-	&.secondary {
-	  background-color: #E9E9E9;
-	  border: 1px solid #C3C3C3;
-	  color: #1D1D1D;
-	}
-
-	a {
-		text-decoration: none;
-		color: #fff;
-	}
-}
-
-
+.cacap-row input { 
+	padding: 8px; 
+} 
+body.cacap .button { 
+	margin-top: 0; 
+} 
+/*
+ *body.cacap .button,
+ *body.cacap input[type="button"],
+ *body.cacap input[type="submit"] {
+ *        background: none repeat scroll 0 0 $button_blue;
+ *        border: 1px solid #1E728C;
+ *        color: #FFFFFF;
+ *        cursor: pointer;
+ *        display: inline-block;
+ *        font-family: inherit;
+ *        font-size: 12px;
+ *        font-weight: 400;
+ *        line-height: 16px;
+ *        margin: 0;
+ *        padding: 4px 10px;
+ *        position: relative;
+ *        text-align: center;
+ *        text-decoration: none;
+ *        text-transform: none;
+ *        transition: background-color 0.15s ease-in-out 0s;
+ *        width: auto;
+ *
+ *        &.secondary {
+ *          background-color: #E9E9E9;
+ *          border: 1px solid #C3C3C3;
+ *          color: #1D1D1D;
+ *        }
+ *
+ *        a {
+ *                text-decoration: none;
+ *                color: #fff;
+ *        }
+ *}
+ *
+ *
+ */
 body.cacap, body.bp-user {
 	font-family: $font;
 	font-size: 14px;
@@ -119,22 +128,6 @@ body.cacap #cacap-header .cacap-hero-row .cacap-edit-buttons {
 	bottom: 20px;
 	text-align: right;
 	width: 100%;
-
-	.button {
-		background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Opera11.10+ */
-		background: -ms-linear-gradient(top, #ffffff 0%,#ededed 100%); /* IE10+ */
-		border: 1px solid #ccc;
-		box-shadow: none;
-		border-radius: 3px;
-		color: #1d1d1d;
-		font-size: 12px;
-		font-weight: 400;
-		padding: 4px 10px;
-		line-height: 16px;
-	}
 }
 
 // Repeated because I hate CSS
@@ -144,21 +137,6 @@ body.cacap .cacap-edit-buttons {
 	text-align: right;
 	width: 100%;
 
-	.button {
-		background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, #ffffff 0%,#ededed 100%); /* Opera11.10+ */
-		background: -ms-linear-gradient(top, #ffffff 0%,#ededed 100%); /* IE10+ */
-		border: 1px solid #ccc;
-		box-shadow: none;
-		border-radius: 3px;
-		color: #1d1d1d;
-		font-size: 12px;
-		font-weight: normal;
-		padding: 4px 10px;
-		line-height: 1.35em;
-	}
 }
 
 body.cacap .cacap-edit-buttons.cacap-edit-buttons-bottom {
@@ -221,17 +199,10 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 }
 
 #cacap-header {
-	background: transparent url('../images/black_linen_v2.png');
-	padding: 0 10px 30px;
-	box-shadow: 0 12px 12px -6px #000;
+	padding: 0 10px 0;
 
 	* {
 		color: $header_primary_text_color;
-	}
-
-	a {
-		color: $link_color;
-		text-decoration: none;
 	}
 
 	.cacap-char-count-gloss {
@@ -263,15 +234,6 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 
 		& > div > div {
 			float: left;
-		}
-
-		a {
-			color: $link_color;
-			text-decoration: none;
-		}
-
-		.button > a {
-			color: #fff;
 		}
 
 		&.stuck {
@@ -393,27 +355,16 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 		font-size: 0.8rem;
 	}
 
-	.cacap-edit-submit {
-		color: #fff;
-	}
-
-	.cacap-vitals-row {
-		border-top: 1px solid $header_primary_text_color;
-	}
-
 	#cacap-vitals {
 		& > dt,
 		& > dd {
 			display: block;
-			padding: 7px 10px 7px 5px;
-			margin: 0 10px 15px 0;
 		}
 
 		dt {
-			width: $col_width_narrow;
+			width: $col_width_onethird;
 			float: left;
-			border-right: 1px solid $header_primary_text_color;
-			margin-right: 20px;
+			margin-bottom: 20px; 
 		}
 
 		dd {
@@ -430,7 +381,6 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 			margin-bottom: 12px;
 			width: 100%;
 			border-radius: 2px 2px 2px 2px;
-			box-shadow: 0 1px 2px rgba(0,0,0,0.1) inset;
 		}
 
 		input[type="text"] {
@@ -529,19 +479,20 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 }
 
 #cacap-body {
-	padding: 50px 0 100px 0;
+	padding: 0 0 100px 0;
 }
 
 .cacap-widget {
 	margin-bottom: 20px;
 }
 
-.cacap-widget-title {
+.cacap-widget-title, #cacap-vitals dt {
 	width: $col_width_onethird;
 	float: left;
 	text-transform: uppercase;
 	font-size: 2em;
 	font-weight: 900;
+	line-height: 1em; 
 }
 
 .cacap-widget-content {
@@ -617,7 +568,6 @@ body.profile-edit {
 #cacap-user-widget-new {
 	background-color: #eee;
 	width: 100%;
-	border: 1px dashed #555;
 	padding: 10px 0;
 
 	#cacap-user-widget-new-content {
@@ -791,13 +741,11 @@ body.profile-edit {
 					li {
 						margin-bottom: 14px;
 						border: 1px solid $light_gray;
-						box-shadow: -2px 2px 4px 1px #aaa;
 						position: relative;
 					}
 
 					li.ui-state-highlight {
 						outline: 1px dashed $light_gray;
-						box-shadow: none;
 						height: 110px;
 					}
 
@@ -1058,3 +1006,13 @@ body.cacap .cacap-widget-content .hallotoolbar {
 		margin-bottom: 8px;
 	}
 }
+
+/* MLA Modifications */ 
+/* Dont' show footer with contact, FAQ, etc. */ 
+.footer-widgets { 
+	display: none; 
+} 
+
+#cacap-user-widget-new h2 { 
+	margin-top: 0.5em; 
+} 

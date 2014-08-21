@@ -62,18 +62,20 @@ window.wp = window.wp || {};
 		 * Set up the sticky header.
 		 */
 		function init_stickyheader() {
-			if ( $( 'body' ).hasClass( 'short-header' ) ) {
-				return;
-			}
-
-			window_height = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-
-			if ( window_height < $(document).height() - 200 ) {
-				$('.cacap-hero-row').waypoint('sticky', {
-					offset: 10,
-					wrapper: '<div class="cacap-hero-row-sticky" />'
-				} );
-			}
+/*
+ *                        if ( $( 'body' ).hasClass( 'short-header' ) ) {
+ *                                return;
+ *                        }
+ *
+ *                        window_height = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+ *
+ *                        if ( window_height < $(document).height() - 200 ) {
+ *                                $('.cacap-hero-row').waypoint('sticky', {
+ *                                        offset: 10,
+ *                                        wrapper: '<div class="cacap-hero-row-sticky" />'
+ *                                } );
+ *                        }
+ */
 		}
 
 		/**
@@ -480,6 +482,8 @@ window.wp = window.wp || {};
 				}
 
 				if ( currently_editing.length && jcw_id !== currently_editing && ! $jcw_target.closest( '.ui-autocomplete' ).length && ! $jcw_target.closest( '.hallolink-dialog' ).length ) {
+					e.stopPropagation();
+
 					$currently_editing = $( '#' + currently_editing );
 
 					// Offset for the header
@@ -491,7 +495,7 @@ window.wp = window.wp || {};
 						$currently_editing.removeClass( 'warn' );
 					}, 800 );
 
-					e.preventDefault();
+					return false;
 				}
 
 				// This is not a widget click, so we can bail
@@ -555,6 +559,14 @@ window.wp = window.wp || {};
 				$w = $( this ).closest( '#cacap-widget-list li' );
 				delete_widget();
 				return false;
+			} );
+		}
+
+		function bind_submit_clicks() {
+			$( '#cacap-edit-form' ).submit( function( e ) {
+				if ( currently_editing.length ) {
+					e.preventDefault();
+				}
 			} );
 		}
 
@@ -711,6 +723,7 @@ window.wp = window.wp || {};
 				init_about_you_character_count();
 				bind_body_clicks();
 				bind_widget_clicks_delete();
+				bind_submit_clicks();
 			}
 		});
 	}

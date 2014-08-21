@@ -165,3 +165,94 @@ function cacap_get_commons_profile_url( $user_id ) {
 	$url = add_query_arg( 'commons-profile', '1', $url );
 	return apply_filters( 'cacap_get_commons_profile_url', $url, $user_id );
 }
+
+/**
+ * Get the header fields, as stored in the DB.
+ */
+function cacap_get_header_fields( $type = 'public' ) {
+	$fields = bp_get_option( 'cacap_header_fields' );
+
+	if ( 'edit' === $type ) {
+		$edit_fields = array(
+			'left' => array(),
+			'right' => array(),
+		);
+
+		$edit_order = bp_get_option( 'cacap_header_fields_edit' );
+
+		if ( empty( $edit_order ) ) {
+			$edit_order = array(
+				'left' => array(),
+				'right' => array(),
+			);
+		}
+
+		// Make sure that they match (all edit fields are in fact in
+		// the saved fields, and all saved fields are in the edit order
+		$flat_saved = array_merge(
+			array( $fields['brief_descriptor'] ),
+			array( $fields['about_you'] ),
+			$fields['vitals']
+		);
+
+		// We always have to include field 1, the Full Name field
+		if ( ! in_array( '1', $flat_saved ) ) {
+			$flat_saved[] = 1;
+		}
+
+		$flat_order = array_merge(
+			$edit_order['left'],
+			$edit_order['right']
+		);
+
+		// Any fields not explicitly saved in the order must be added
+		// to the end of one or other column
+		$missing_from_order = array_diff( $flat_saved, $flat_order );
+		foreach ( $missing_from_order as $mfo ) {
+			if ( count( $edit_order['left'] ) <= count( $edit_order['right'] ) ) {
+				$side = 'left';
+			} else {
+				$side = 'right';
+			}
+
+			$edit_order[ $side ][] = $mfo;
+		}
+
+		// Remove items that are in the edit order but not in the saved
+		// field for some reason (shouldn't happen)
+		$missing_from_saved = array_diff( $flat_order, $flat_saved );
+		foreach ( $missing_from_saved as $mfs ) {
+			foreach ( array( 'left', 'right' ) as $side ) {
+				$mfs_key = array_search( $mfs, $edit_order[ $side ] );
+				if ( false !== $mfs_key ) {
+					unset( $edit_order[ $side ][ $mfs_key ] );
+					$edit_order[ $side ] = array_values( $edit_order[ $side ] );
+				}
+			}
+		}
+
+		$fields = $edit_order;
+	}
+
+	return $fields;
+}
+
+/**
+ * Get the profile field ID corresponding to the Brief Descriptor area.
+ */
+function cacap_get_brief_descriptor_field() {
+	$fields = cacap_get_header_fields();
+
+	$bd_field = isset( $fields['brief_descriptor'] ) ? intval( $fields['brief_descriptor'] ) : 0;
+	return $bd_field;
+}
+
+/**
+ * Get the profile field ID corresponding to the About You area.
+ */
+function cacap_get_about_you_field() {
+	$fields = cacap_get_header_fields();
+
+	$ay_field = isset( $fields['about_you'] ) ? intval( $fields['about_you'] ) : 0;
+	return $ay_field;
+}

@@ -39,10 +39,6 @@
 				<?php bp_get_template_part( 'cacap/header' ) ?>
 			</div>
 
-			<div id="cacap-tabs">
-				<?php bp_get_template_part( 'cacap/tabs' ) ?>
-			</div>
-
 			<div id="cacap-body">
 				<?php bp_get_template_part( 'cacap/body' ) ?>
 			</div>
