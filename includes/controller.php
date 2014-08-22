@@ -165,6 +165,7 @@ class CACAP_Controller {
 		wp_register_script( 'cacap-rangy', CACAP_PLUGIN_URL . '/lib/rangy/rangy-core.js', array( 'jquery' ), $v );
 		wp_register_script( 'cacap-hallo', CACAP_PLUGIN_URL . '/lib/hallo/hallo.js', array( 'jquery', 'jquery-ui-widget', 'jquery-ui-dialog', 'cacap-rangy' ), $v );
 		wp_register_script( 'cacap-scrollto', CACAP_PLUGIN_URL . '/lib/jquery.scrollTo/jquery.scrollTo.min.js', array( 'jquery' ), $v );
+		wp_register_script( 'cacap-htmlclean', CACAP_PLUGIN_URL . '/lib/jquery.clean/jquery.htmlClean.min.js', array( 'jquery' ), $v );
 
 		$deps = array(
 			'jquery',
@@ -179,6 +180,7 @@ class CACAP_Controller {
 			$deps[] = 'cacap-scrollto';
 			wp_enqueue_script( 'cacap-rangy' );
 			wp_enqueue_script( 'cacap-hallo' );
+			wp_enqueue_script( 'cacap-htmlclean' );
 		}
 
 		wp_enqueue_script(

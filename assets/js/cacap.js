@@ -226,8 +226,9 @@ window.wp = window.wp || {};
 		 */
 		function process_okcancel() {
 			if ( 'ok' === ok_or_cancel ) {
-				// Copy new content to hidden input
-				$jcw_half.find( '.editable-content-stash' ).val( $jcw_half.find( '.editable-content' ).html() );
+				alert( $jcw_half.find( '.editable-content' ).html() ); // Copy new content to hidden input
+				alert( remove_unwanted_html_tags( $jcw_half.find( '.editable-content' ).html() ) ); // Copy new content to hidden input
+				$jcw_half.find( '.editable-content-stash' ).val( remove_unwanted_html_tags( $jcw_half.find( '.editable-content' ).html() ) );
 			} else {
 				// Replace the edited content with the cached value
 				$jcw_half.find( '.editable-content' ).html( widget_value_cache[ wid ] );
@@ -286,7 +287,17 @@ window.wp = window.wp || {};
 			// Remove currently_editing toggle
 			unmark_currently_editing();
 		}
-
+		/**
+		 * Remove unwanted HTML tags from widget input. 
+		 * This allows users to paste rich text from word processors.
+		 */ 
+		function remove_unwanted_html_tags(raw_html) { 
+			var $wrapped_html = $('<div>' + raw_html + '</div>'); // jquery needs these wrapped up
+			$wrapped_html.find('style, meta, head').remove(); //remove tags
+			$wrapped_html.find('p').append('<br/>').contents().unwrap(); //replace <p> tags with <br> tags 
+			var result = $wrapped_html.html().trim().replace(/"/g, "&quot;").replace(/\n/g, " "); 
+			return result; 
+		} 
 		/**
 		 * Toggle editable widget areas (when clicked).
 		 */
