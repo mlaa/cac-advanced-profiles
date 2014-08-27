@@ -4,6 +4,8 @@
  */
 ?>
 
+<?php if ( ! bp_locate_template( 'templates/parts/header-banner.php', true ) ) _log( "Couldn't find header-head.php!" ); ?>
+
 <div class="cacap-row cacap-hero-row<?php if ( cacap_is_commons_profile() ) : ?> stuck<?php endif ?>">
 	<div class="cacap-sticky-dummy">
 		<div class="cacap-hero">
@@ -45,7 +47,10 @@
 			<h1>
 				<a href="<?php echo bp_displayed_user_domain() ?>"><?php echo xprofile_get_field_data( 1, bp_displayed_user_id() ) ?></a>
 			</h1>
-			<div class="activity"><a href="<?php echo bp_displayed_user_domain() . _('activity') ?>"><?php bp_last_activity( bp_displayed_user_id() ) ?></a></div>
+			<div class="activity">
+				<a href="<?php echo bp_displayed_user_domain() . _('activity') ?>"><?php bp_last_activity( bp_displayed_user_id() ) ?></a>. 
+				<a href="<?php echo bp_displayed_user_domain() . _('activity') ?>">View this member's Commons activity.</a>
+			</div>
 
 			<?php $bd_field = cacap_get_brief_descriptor_field() ?>
 			<?php if ( cacap_field_is_visible_for_user( $bd_field ) ) : ?>
