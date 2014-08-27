@@ -259,9 +259,9 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 			}
 
 			.cacap-avatar img.avatar {
-				height: 80px;
-				width: 80px;
-				float: right;
+				height: 250px;
+				width: 250px;
+				float: left;
 			}
 		}
 		&.stuck2 {
@@ -292,9 +292,9 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 			}
 
 			.cacap-avatar img.avatar {
-				height: 80px;
-				width: 80px;
-				float: right;
+				height: 250px;
+				width: 250px;
+				float: left;
 			}
 		}
 	}
@@ -334,8 +334,9 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 	}
 
 	.cacap-avatar {
-		width: 130px;
-		float: right !important;
+		width: 250px;
+		float: left;
+		margin-right: 64px;
 	}
 
 	.cacap-avatar-buttons-row {
@@ -344,7 +345,7 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 
 	.cacap-avatar-buttons {
 		float: right;
-		width: 130px;
+		width: 250px;
 		&.mini a { 
 			font-size: 0; /* no text */ 
 			padding: 7px; 
