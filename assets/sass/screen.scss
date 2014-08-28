@@ -54,6 +54,10 @@ a {
 	color: $link_color;
 }
 
+em { 
+	font-style: italic; 
+} 
+
 body.no-js .hide-if-no-js {
 	display: none;
 }

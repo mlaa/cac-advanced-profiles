@@ -13,7 +13,7 @@ if ( $template ) {
 	<div class="cacap-row cacap-vitals-row">
 		<dl id="cacap-vitals">
 		<?php foreach ( cacap_vitals() as $vital ) : ?>
-			<dt class="<?php echo esc_attr( $vital->css_class ) ?>"><?php echo esc_html( $vital->title ) ?></dt>
+			<dt class="<?php echo esc_attr( $vital->css_class ) ?>"><?php echo cacap_sanitize_content( $vital->title ) ?></dt>
 
 			<?php /* Don't escape content, because it may contain HTML */ ?>
 			<dd class="<?php echo esc_attr( $vital->css_class ) ?>"><?php echo $vital->content ?></dd>

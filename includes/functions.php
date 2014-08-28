@@ -128,6 +128,8 @@ function cacap_sanitize_content( $content ) {
 		'p' => array(),
 		'ol' => array(),
 		'ul' => array(),
+		'strong' => array(),
+		'em' => array(),
 	) );
 }
 
