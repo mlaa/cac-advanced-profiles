@@ -207,9 +207,9 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 #cacap-header {
 	padding: 0 10px 0;
 
-	* {
-		color: $header_primary_text_color;
-	}
+	h1 a { 
+		color: #333; 
+	} 
 
 	.cacap-char-count-gloss {
 		text-align: right;
