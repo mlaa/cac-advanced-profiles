@@ -131,7 +131,7 @@ body.cacap, body.bp-user {
 
 body.cacap #cacap-header .cacap-hero-row .cacap-edit-buttons {
 	position: absolute;
-	bottom: 20px;
+	top: 50px;
 	text-align: right;
 	width: 100%;
 }
@@ -139,7 +139,7 @@ body.cacap #cacap-header .cacap-hero-row .cacap-edit-buttons {
 // Repeated because I hate CSS
 body.cacap .cacap-edit-buttons {
 	position: absolute;
-	bottom: 20px;
+	top: 50px;
 	text-align: right;
 	width: 100%;
 
@@ -309,7 +309,7 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 	}
 
 	.cacap-hero {
-		width: $col_width_threequarters;
+		width: 100%;
 
 		p {
 			font-size: 1.5em;
