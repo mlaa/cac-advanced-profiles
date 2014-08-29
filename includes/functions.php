@@ -38,6 +38,7 @@ function cacap_widget_types( $args = array() ) {
 		'college'            => 'CACAP_Widget_College',
 		'titlewidget'        => 'CACAP_Widget_Title',
 		'twitter'            => 'CACAP_Widget_Twitter',
+		'blog'               => 'CACAP_Widget_Blog',
 	);
 
 	$types = apply_filters( 'cacap_widget_types', $types, $r );
