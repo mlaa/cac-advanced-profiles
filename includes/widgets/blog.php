@@ -8,4 +8,8 @@ class CACAP_Widget_Blog extends CACAP_Widget {
 			'content_type' => 'url',
 		) );
 	}
+
+	public function display_content_markup( $value ) {
+		return "<a href=\"$value\">$value"; 
+	} 
 }
