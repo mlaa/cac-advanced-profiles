@@ -15,6 +15,8 @@ abstract class CACAP_Widget {
 			'name' => '',
 			'slug' => '',
 
+			'content_type' => '',
+
 			'allow_custom_title' => false,
 			'allow_multiple' => false,
 			'allow_new' => true,
@@ -32,6 +34,9 @@ abstract class CACAP_Widget {
 
 		// @todo unique?
 		$this->slug = $r['slug'];
+
+		// widgets are rich text editable by default
+		$this->content_type = ( empty($r['content_type']) ) ? 'richtext' : $r['content_type']; 
 
 		$this->allow_custom_title = $r['allow_custom_title'];
 		$this->allow_multiple = (bool) $r['allow_multiple'];
@@ -229,7 +234,7 @@ abstract class CACAP_Widget {
 
 	public function edit_content_markup( $value, $key ) {
 		if ( $this->allow_edit ) {
-			$html  = '<article class="editable-content richtext">' . $value . '</article>';
+			$html  = "<article class=\"editable-content $this->content_type\">$value</article>";
 			$html .= '<input name="' . $key . '[content]" class="editable-content-stash" type="hidden" value="' . esc_html( $value ) . '" />';
 			return $html;
 		} else {
