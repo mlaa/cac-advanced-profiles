@@ -5,6 +5,7 @@ class CACAP_Widget_Blog extends CACAP_Widget {
 		parent::init( array(
 			'name' => __( 'Blog', 'cacap' ),
 			'slug' => 'blog',
+			'content_type' => 'url',
 		) );
 	}
 }
