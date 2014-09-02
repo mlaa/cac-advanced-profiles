@@ -524,6 +524,11 @@ window.wp = window.wp || {};
 		/* Warn the user of invalid data by making the input box red for a moment. 
 		 */ 
 		function warn_invalid_data($currently_editing) { 
+
+			// Why do we have to scroll back to this spot? 
+			currently_editing_position = $currently_editing.offset();
+			$.scrollTo( (currently_editing_position.top - 230) + 'px', 500 );
+
 			$currently_editing.addClass( 'warn' );
 			setTimeout( function() {
 				$currently_editing.removeClass( 'warn' );
@@ -548,8 +553,10 @@ window.wp = window.wp || {};
 					$currently_editing = $( '#' + currently_editing );
 
 					// Offset for the header
-					currently_editing_position = $currently_editing.offset();
-					$.scrollTo( (currently_editing_position.top - 230) + 'px', 500 );
+					/*
+					 *currently_editing_position = $currently_editing.offset();
+					 *$.scrollTo( (currently_editing_position.top - 230) + 'px', 500 );
+					 */
 
 					warn_invalid_data($currently_editing); 
 
