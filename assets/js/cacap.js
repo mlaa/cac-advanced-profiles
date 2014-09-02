@@ -233,6 +233,12 @@ window.wp = window.wp || {};
 				return false; 
 			} 
 		} 
+
+		/** Checks whether twitter username is valid.
+		 */ 
+		function is_valid_twitter_username(username) { 
+			return /^\w{1,32}$/.test(username) ? true : false; 
+		} 
 		/**
 		 * Validate data like URLs. 
 		 * First, checks whether object has a content type of 'url',
@@ -246,8 +252,7 @@ window.wp = window.wp || {};
 				//validate URL
 				return is_valid_URL(content) ? true : false; 
 			} else if (obj.hasClass( 'twitter_username' ) ) { 
-				alert('this is a twitter username!'); 
-				//validate twitter username
+				return is_valid_twitter_username(content) ? true : false; 
 			} else { 
 				alert('didn\'t find content type!'); 
 				//assume content doesn't need validation, is valid

@@ -34,11 +34,12 @@ function cacap_widget_types( $args = array() ) {
 		'education'          => 'CACAP_Widget_Education',
 		'positions'          => 'CACAP_Widget_Positions',
 		'publications'       => 'CACAP_Widget_Publications',
-		'rss'                => 'CACAP_Widget_RSS',
+		//'rss'                => 'CACAP_Widget_RSS',
 		'college'            => 'CACAP_Widget_College',
 		'titlewidget'        => 'CACAP_Widget_Title',
-		'twitter'            => 'CACAP_Widget_Twitter',
+		//'twitter'            => 'CACAP_Widget_Twitter',
 		'blog'               => 'CACAP_Widget_Blog',
+		'twitter-username'   => 'CACAP_Widget_Twitter_Username', 
 	);
 
 	$types = apply_filters( 'cacap_widget_types', $types, $r );
