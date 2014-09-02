@@ -221,14 +221,55 @@ window.wp = window.wp || {};
 			}
 		}
 
+		/** 
+		 * Check whether URL is a valid URL. 
+		 * Returns true if valid, false if invalid. 
+		 * Regex via http://stackoverflow.com/a/6930641/584121  
+		 */ 
+		function is_valid_URL(url) { 
+			if( /^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test( url ) ){
+				return true; 
+			} else {
+				return false; 
+			} 
+		} 
+		/**
+		 * Validate data like URLs. 
+		 * First, checks whether object has a content type of 'url',
+		 * 'twitter_username', etc, and validates it as such. 
+		 * Returns true if valid, false if invalid. 
+		 * Defaults to true. 
+		 */ 
+		function is_valid(obj) { 
+			var content = obj.html(); 
+			if ( obj.hasClass( 'url' ) ) { 
+				//validate URL
+				return is_valid_URL(content) ? true : false; 
+			} else if (obj.hasClass( 'twitter_username' ) ) { 
+				alert('this is a twitter username!'); 
+				//validate twitter username
+			} else { 
+				alert('didn\'t find content type!'); 
+				//assume content doesn't need validation, is valid
+				return true; 
+			} 
+		} 
 		/**
 		 * Process the click of an OK or Cancel button.
 		 */
 		function process_okcancel() {
 			if ( 'ok' === ok_or_cancel ) {
-				alert( $jcw_half.find( '.editable-content' ).html() ); // Copy new content to hidden input
-				alert( remove_unwanted_html_tags( $jcw_half.find( '.editable-content' ).html() ) ); // Copy new content to hidden input
-				$jcw_half.find( '.editable-content-stash' ).val( remove_unwanted_html_tags( $jcw_half.find( '.editable-content' ).html() ) );
+				//alert( $jcw_half.find( '.editable-content' ).html() ); // Copy new content to hidden input
+				//alert( remove_unwanted_html_tags( $jcw_half.find( '.editable-content' ).html() ) ); // Copy new content to hidden input
+				
+				// Validate data
+				if ( is_valid( $jcw_half.find( '.editable-content' ) ) ) { 
+					$jcw_half.find( '.editable-content-stash' ).val( remove_unwanted_html_tags( $jcw_half.find( '.editable-content' ).html() ) );
+				} else { 
+					warn_invalid_data($jcw_half); 
+					return;  
+				} 	       
+
 			} else {
 				// Replace the edited content with the cached value
 				$jcw_half.find( '.editable-content' ).html( widget_value_cache[ wid ] );
@@ -480,6 +521,15 @@ window.wp = window.wp || {};
 			$.scrollTo( ( $w.offset().top - 230 ) + 'px', 500 );
 		}
 
+		/* Warn the user of invalid data by making the input box red for a moment. 
+		 */ 
+		function warn_invalid_data($currently_editing) { 
+			$currently_editing.addClass( 'warn' );
+			setTimeout( function() {
+				$currently_editing.removeClass( 'warn' );
+			}, 800 );
+		} 
+
 		function bind_body_clicks() {
 			$( 'body' ).on( 'mousedown', function( e ) {
 				$jcw_target = $( e.target );
@@ -501,10 +551,7 @@ window.wp = window.wp || {};
 					currently_editing_position = $currently_editing.offset();
 					$.scrollTo( (currently_editing_position.top - 230) + 'px', 500 );
 
-					$currently_editing.addClass( 'warn' );
-					setTimeout( function() {
-						$currently_editing.removeClass( 'warn' );
-					}, 800 );
+					warn_invalid_data($currently_editing); 
 
 					return false;
 				}
