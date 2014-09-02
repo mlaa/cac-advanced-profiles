@@ -557,12 +557,6 @@ window.wp = window.wp || {};
 
 					$currently_editing = $( '#' + currently_editing );
 
-					// Offset for the header
-					/*
-					 *currently_editing_position = $currently_editing.offset();
-					 *$.scrollTo( (currently_editing_position.top - 230) + 'px', 500 );
-					 */
-
 					warn_invalid_data($currently_editing); 
 
 					return false;
