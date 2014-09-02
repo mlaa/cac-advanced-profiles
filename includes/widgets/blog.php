@@ -10,6 +10,6 @@ class CACAP_Widget_Blog extends CACAP_Widget {
 	}
 
 	public function display_content_markup( $value ) {
-		return "<a href=\"$value\">$value"; 
+		return "<a href=\"$value\">$value</a>"; 
 	} 
 }

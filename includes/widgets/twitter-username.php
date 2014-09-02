@@ -10,6 +10,6 @@ class CACAP_Widget_Twitter_Username extends CACAP_Widget {
 	}
 
 	public function display_content_markup( $value ) {
-		return "<a href=\"http://www.twitter.com/$value\">$value"; 
+		return '<a href="http://www.twitter.com/' . $value . '">' . $value . '</a>'; 
 	} 
 }
