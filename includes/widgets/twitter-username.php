@@ -3,10 +3,15 @@
 class CACAP_Widget_Twitter_Username extends CACAP_Widget {
 	public function __construct() {
 		parent::init( array(
-			'name' => __( 'Twitter User Name', 'cacap' ),
+			'name' => __( '<em>Twitter</em> User Name', 'cacap' ),
 			'slug' => 'twitter-username',
 			'content_type' => 'twitter_username',
 		) );
+	}
+
+	// Italicize Twitter.
+	public function display_title_markup( $value ) {
+		return wp_kses( $this->name );
 	}
 
 	public function display_content_markup( $value ) {
