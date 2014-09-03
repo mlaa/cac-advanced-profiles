@@ -57,10 +57,8 @@ window.wp = window.wp || {};
 		 */
 		function init_bodyclass() {
 			if ( $('body').hasClass('no-js') ) { 
-				alert('has class!'); 
 				document.body.className = document.body.className.replace( /no-js/, 'js' );
 			} else { 
-				alert('no has class!'); 
 				$('body').addClass('js'); 
 			} 
 		}
