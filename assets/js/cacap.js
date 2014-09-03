@@ -580,7 +580,7 @@ window.wp = window.wp || {};
 
 					$currently_editing = $( '#' + currently_editing );
 
-					warn_invalid_data($currently_editing, 'Please click "ok" or "cancel."'); 
+					warn_invalid_data($currently_editing.find('.editable-content'), 'Please click "ok" or "cancel."'); 
 
 					return false;
 				}
