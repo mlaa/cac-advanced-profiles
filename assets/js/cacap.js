@@ -56,7 +56,13 @@ window.wp = window.wp || {};
 		 * BuddyPress should do this, but just in case
 		 */
 		function init_bodyclass() {
-			document.body.className = document.body.className.replace( /no-js/, 'js' );
+			if ( $('body').hasClass('no-js') ) { 
+				alert('has class!'); 
+				document.body.className = document.body.className.replace( /no-js/, 'js' );
+			} else { 
+				alert('no has class!'); 
+				$('body').addClass('js'); 
+			} 
 		}
 
 		/**
