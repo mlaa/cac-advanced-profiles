@@ -14,6 +14,7 @@ window.wp = window.wp || {};
 			jcw_id,
 			jcw_target_is_button,
 			keypress_code,
+			message, 
 			new_widget_count,
 			new_widget_prototype,
 			ok_or_cancel,
@@ -250,11 +251,27 @@ window.wp = window.wp || {};
 			var content = obj.html(); 
 			if ( obj.hasClass( 'url' ) ) { 
 				//validate URL
-				return is_valid_URL(content) ? true : false; 
+				console.log('validating url!'); 
+				if ( is_valid_URL(content) ) { 
+					console.log('url looks good!'); 
+					return true; 
+				} else { 
+					console.log('url looks bad!'); 
+					message = 'Please enter a valid URL.'; 
+					warn_invalid_data(obj, message);
+					return false; 
+				} 
 			} else if (obj.hasClass( 'twitter_username' ) ) { 
-				return is_valid_twitter_username(content) ? true : false; 
+				if ( is_valid_twitter_username(content) ) { 
+					console.log('twitter looks good!'); 
+					return true; 
+				} else { 
+					console.log('twitter looks bad!'); 
+					message = 'Please enter a valid twitter username, without spaces or the "@" prefix.'; 
+					warn_invalid_data(obj, message);
+					return false
+				} 
 			} else { 
-				alert('didn\'t find content type!'); 
 				//assume content doesn't need validation, is valid
 				return true; 
 			} 
@@ -264,14 +281,10 @@ window.wp = window.wp || {};
 		 */
 		function process_okcancel() {
 			if ( 'ok' === ok_or_cancel ) {
-				//alert( $jcw_half.find( '.editable-content' ).html() ); // Copy new content to hidden input
-				//alert( remove_unwanted_html_tags( $jcw_half.find( '.editable-content' ).html() ) ); // Copy new content to hidden input
-				
 				// Validate data
 				if ( is_valid( $jcw_half.find( '.editable-content' ) ) ) { 
-					$jcw_half.find( '.editable-content-stash' ).val( remove_unwanted_html_tags( $jcw_half.find( '.editable-content' ).html() ) );
+					$jcw_half.find( '.editable-content-stash' ).val( remove_unwanted_html_tags( $jcw_half.find( '.editable-content' ).html() ) ); //Copy new content to hidden input 
 				} else { 
-					warn_invalid_data($jcw_half); 
 					return;  
 				} 	       
 
@@ -528,16 +541,26 @@ window.wp = window.wp || {};
 
 		/* Warn the user of invalid data by making the input box red for a moment. 
 		 */ 
-		function warn_invalid_data($currently_editing) { 
+		function warn_invalid_data($currently_editing, message) { 
 
 			// Why do we have to scroll back to this spot? 
 			currently_editing_position = $currently_editing.offset();
 			$.scrollTo( (currently_editing_position.top - 230) + 'px', 500 );
 
+			$currently_editing = $currently_editing.parent(); 
 			$currently_editing.addClass( 'warn' );
 			setTimeout( function() {
 				$currently_editing.removeClass( 'warn' );
 			}, 800 );
+
+			message = message || ""; //default message is blank
+			$currently_editing.find('.cacap-error').html( message ); 
+		} 
+
+		/* Undo the warning message from warn_invalid_data()
+		 */ 
+		function unwarn(obj) { 
+			obj.find('.cacap-error').html(''); 
 		} 
 
 		function bind_body_clicks() {
@@ -557,10 +580,12 @@ window.wp = window.wp || {};
 
 					$currently_editing = $( '#' + currently_editing );
 
-					warn_invalid_data($currently_editing); 
+					warn_invalid_data($currently_editing, 'Please click "ok" or "cancel."'); 
 
 					return false;
 				}
+
+				unwarn($jcw_half); 
 
 				// This is not a widget click, so we can bail
 				if ( ! jcw_id.length ) {

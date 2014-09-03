@@ -48,7 +48,7 @@
 				<a href="<?php echo bp_displayed_user_domain() ?>"><?php echo xprofile_get_field_data( 1, bp_displayed_user_id() ) ?></a>
 			</h1>
 			<div class="activity">
-				<a href="<?php echo bp_displayed_user_domain() . _('activity') ?>"><?php bp_last_activity( bp_displayed_user_id() ) ?>.  View this member's Commons activity.</a>
+				<?php bp_last_activity( bp_displayed_user_id() ) ?>. <a href="<?php echo bp_displayed_user_domain() . _('activity') ?>">View this member's Commons activity.</a>
 			</div>
 
 			<?php $bd_field = cacap_get_brief_descriptor_field() ?>
