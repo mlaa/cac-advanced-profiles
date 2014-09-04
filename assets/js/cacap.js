@@ -255,22 +255,17 @@ window.wp = window.wp || {};
 			var content = obj.html(); 
 			if ( obj.hasClass( 'url' ) ) { 
 				//validate URL
-				console.log('validating url!'); 
 				if ( is_valid_URL(content) ) { 
-					console.log('url looks good!'); 
 					return true; 
 				} else { 
-					console.log('url looks bad!'); 
 					message = 'Please enter a valid URL.'; 
 					warn_invalid_data(obj, message);
 					return false; 
 				} 
 			} else if (obj.hasClass( 'twitter_username' ) ) { 
 				if ( is_valid_twitter_username(content) ) { 
-					console.log('twitter looks good!'); 
 					return true; 
 				} else { 
-					console.log('twitter looks bad!'); 
 					message = 'Please enter a valid twitter username, without spaces or the "@" prefix.'; 
 					warn_invalid_data(obj, message);
 					return false
@@ -279,6 +274,63 @@ window.wp = window.wp || {};
 				//assume content doesn't need validation, is valid
 				return true; 
 			} 
+		} 
+		/** 
+		 * Process the click of an OK or Cancel button, but first, 
+		 * figure out which button it is and direct that to the appropriate
+		 * process_okcancel_X() function. 
+		 */ 
+		function process_okcancel_abstract() { 
+			$w = $jcw_half.closest( 'ul#cacap-widget-list li' );
+			wid = $w.attr( 'id' );
+
+			wtype = get_widget_type_from_class( $w.attr( 'class' ) );
+
+			switch ( wtype ) {
+
+				case 'positions' :
+					if ( jcw_target_is_button ) {
+						process_okcancel_positions();
+					} else {
+						toggle_editable_positions();
+					}
+
+					break;
+
+				case 'rss' :
+				case 'twitter' :
+					if ( jcw_target_is_button ) {
+						process_okcancel_rss();
+					} else {
+						toggle_editable_rss();
+					}
+					break;
+
+				default :
+					if ( jcw_target_is_button ) {
+						process_okcancel();
+					} else if ( $jcw_target.closest( 'article' ).hasClass( 'editable-content' ) ) {
+						toggle_editable();
+					}
+
+					break;
+			}
+		} 
+		/** 
+		 * Process clicking away from an editing area. 
+		 * This should basically do the same thing as pressing "ok." 
+		 */ 
+		function process_clickaway() { 
+			if ( is_valid( $jcw_half.find( '.editable-content' ) ) ) { 
+				$jcw_half.find( '.editable-content-stash' ).val( remove_unwanted_html_tags( $jcw_half.find( '.editable-content' ).html() ) ); //Copy new content to hidden input 
+			} else { 
+				return;  
+			} 	       
+			// Remove editing class
+			$jcw_half.removeClass( 'editing' );
+
+			// Remove currently_editing toggle
+			unmark_currently_editing();
 		} 
 		/**
 		 * Process the click of an OK or Cancel button.
@@ -580,6 +632,8 @@ window.wp = window.wp || {};
 				}
 
 				if ( currently_editing.length && jcw_id !== currently_editing && ! $jcw_target.closest( '.ui-autocomplete' ).length && ! $jcw_target.closest( '.hallolink-dialog' ).length ) {
+					//process_clickaway(); 
+
 					e.stopPropagation();
 
 					$currently_editing = $( '#' + currently_editing );
@@ -610,40 +664,8 @@ window.wp = window.wp || {};
 					ok_or_cancel = $jcw_target.hasClass( 'cacap-ok' ) ? 'ok' : 'cancel';
 				}
 
-				$w = $jcw_half.closest( 'ul#cacap-widget-list li' );
-				wid = $w.attr( 'id' );
+				process_okcancel_abstract(); 
 
-				wtype = get_widget_type_from_class( $w.attr( 'class' ) );
-
-				switch ( wtype ) {
-
-					case 'positions' :
-						if ( jcw_target_is_button ) {
-							process_okcancel_positions();
-						} else {
-							toggle_editable_positions();
-						}
-
-						break;
-
-					case 'rss' :
-					case 'twitter' :
-						if ( jcw_target_is_button ) {
-							process_okcancel_rss();
-						} else {
-							toggle_editable_rss();
-						}
-						break;
-
-					default :
-						if ( jcw_target_is_button ) {
-							process_okcancel();
-						} else if ( $jcw_target.closest( 'article' ).hasClass( 'editable-content' ) ) {
-							toggle_editable();
-						}
-
-						break;
-				}
 			} );
 		}
 
