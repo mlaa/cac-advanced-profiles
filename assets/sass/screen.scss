@@ -166,7 +166,7 @@ div.cleardiv {
 }
 
 .cacap-row {
-	padding-top: 25px;
+	padding-top: 20px;
 	margin: 0 auto;
 	max-width: 100%;
 	min-width: 768px;
@@ -349,7 +349,7 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 
 	.cacap-avatar-buttons {
 		float: right;
-		width: 194px;
+		width: 175px;
 		&.mini a { 
 			font-size: 0; /* no text */ 
 			padding: 7px; 
@@ -490,10 +490,6 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 
 #cacap-body {
 	padding: 0 0 50px 0;
-}
-
-.cacap-widget {
-	margin-bottom: 20px;
 }
 
 .cacap-widget-title, #cacap-vitals dt {
