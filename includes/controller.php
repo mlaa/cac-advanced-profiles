@@ -151,7 +151,7 @@ class CACAP_Controller {
 			$v = $this->get_version_string();
 			wp_enqueue_style( 'cac-bp-css', get_stylesheet_directory_uri() . '/style.css', $v );
 			wp_enqueue_style( 'cacap-css', CACAP_PLUGIN_URL . '/assets/css/screen.css', array( 'cac-bp-css' ), $v );
-			wp_enqueue_style( 'cacap-jquery-ui', CACAP_PLUGIN_URL . '/lib/smoothness/jquery-ui-1.10.3.custom.css', array( 'cac-bp-css' ), $v );
+			//wp_enqueue_style( 'cacap-jquery-ui', CACAP_PLUGIN_URL . '/lib/smoothness/jquery-ui-1.10.3.custom.css', array( 'cac-bp-css' ), $v );
 			wp_enqueue_style( 'cacap-font-awesome', CACAP_PLUGIN_URL . '/lib/font-awesome/css/font-awesome.css', array( 'cac-bp-css' ), $v );
 		}
 	}
