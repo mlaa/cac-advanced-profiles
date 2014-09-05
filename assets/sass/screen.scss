@@ -9,11 +9,11 @@
 
 $header_primary_text_color: #333;
 $header_secondary_text_color: #444;
-$link_color: #2ba6cb;
+$link_color: #07D;
 $body_primary_text_color: #000;
 $button_text_color: #1d1d1d;
 $button_blue: #2BA6CB;
-$link_pink: #ff4466;
+$link_pink: $link_color; 
 $activity_color: #333;
 $light_gray: #dadada;
 
@@ -534,14 +534,14 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 	}
 
 	.cacap-click-to-edit.cacap-widget-section-editable {
-		border: 2px dashed $light_gray;
+		border: 1px dashed #ccc;
 	}
 }
 
 body.profile-edit {
 	#cacap-widget-list {
 		& > li {
-			outline: 1px solid #555555;
+			outline: 1px solid #aaa;
 			margin: 0.5em 0;
 		}
 
@@ -577,80 +577,6 @@ body.profile-edit {
 	display: none;
 }
 
-#cacap-user-widget-new {
-	background-color: #eee;
-	width: 100%;
-	padding: 10px 0;
-
-	#cacap-user-widget-new-content {
-		width: $row_width;
-		margin: 0 auto;
-	}
-
-	#cacap-new-widget-types {
-		overflow: hidden;
-		height: 100px;
-
-		a {
-			text-decoration: none;
-			color: $link_pink;
-		}
-
-		li {
-			float: left;
-			width: 100px;
-			display: block;
-			text-align: center;
-			border: 1px solid #777;
-			height: 90%;
-			margin-right: 10px;
-			padding: 3px;
-			cursor: pointer;
-
-			&.cacap-has-max {
-				opacity: .4;
-
-				.cacap-has-max-tooltip {
-					position: absolute;
-					font-size: .9em;
-					height: 1.4em;
-					background: #fff;
-					border: 1px solid #666;
-					opacity: 2;
-					color: #000;
-					display: none;
-				}
-
-				&:hover {
-					background: transparent;
-					cursor: default;
-
-					.cacap-has-max-tooltip {
-						display: block;
-					}
-
-					a {
-						color: $link_pink;
-						cursor: default;
-					}
-				}
-			}
-
-			&:hover {
-				background: $button_blue;
-
-				a {
-					color: #fff;
-				}
-			}
-
-			.cacap-widget-type-name {
-				margin-top: 3px;
-				display: block;
-			}
-		}
-	}
-}
 
 #cacap-widget-prototypes {
 	display: none;
@@ -1008,15 +934,25 @@ body.cacap .cacap-widget-positions article {
 body.cacap .cacap-widget-content .hallotoolbar {
 	width: 100%;
 	position: absolute;
-	top: -45px;
-
+	top: -53px;
 	i {
 		font-style: normal;
 	}
-
 	button {
 		margin-bottom: 8px;
+		padding: 8px; 
+		border-radius: 0; 
+		border-right: none; 
 	}
+	.ui-buttonset:first-child span:first-child button { 
+		border-top-left-radius: 3px; 
+		border-bottom-left-radius: 3px; 
+	} 
+	.ui-buttonset:last-child span:last-child button { 
+		border-top-right-radius: 3px; 
+		border-bottom-right-radius: 3px;
+		border-right: 1px solid #ebebeb; 
+	} 
 }
 
 /* MLA Modifications */ 
