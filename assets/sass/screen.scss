@@ -586,7 +586,7 @@ body.profile-edit {
 	.cacap-drag-handle {
 		position: absolute;
 		top: 0;
-		width: 20px;
+		width: 15px;
 		height: 100%;
 		cursor: move;
 		margin-top: 0;
@@ -602,6 +602,7 @@ body.profile-edit {
 				rgba(255,255,255,.5) 5px,
 				rgba(255,255,255,.5) 10px
 			);
+		opacity: 0.5; 
 	}
 
 	.cacap-widget-title {
