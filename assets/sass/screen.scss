@@ -436,9 +436,14 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 	}
 }
 
+.field-visibility-settings-toggle { 
+	margin-left: 38%;
+	margin-bottom: 18px; 
+} 
+
 #cacap-tabs {
 	display: block;
-	height: $tab_height;
+	height: $tab_height
 	list-style: none outside none;
 	margin: 20px 0;
 	padding: 0;
