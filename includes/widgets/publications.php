@@ -5,6 +5,7 @@ class CACAP_Widget_Publications extends CACAP_Widget {
 		parent::init( array(
 			'name' => __( 'Publications', 'cacap' ),
 			'slug' => 'publications',
+			'placeholder' => 'A list of your publications.', 
 		) );
 	}
 }

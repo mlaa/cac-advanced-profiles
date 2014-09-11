@@ -24,6 +24,8 @@ abstract class CACAP_Widget {
 
 			'context' => 'body',
 			'position' => 50, // @todo
+
+			'placeholder' => '', 
 		) );
 
 		if ( empty( $r['name'] ) || empty( $r['slug'] ) ) {
@@ -45,6 +47,8 @@ abstract class CACAP_Widget {
 
 		// @todo whitelist? how to make extensible?
 		$this->context = $r['context'];
+
+		$this->placeholder = $r['placeholder']; 
 	}
 
 	public function option_markup() {
@@ -234,7 +238,7 @@ abstract class CACAP_Widget {
 
 	public function edit_content_markup( $value, $key ) {
 		if ( $this->allow_edit ) {
-			$html  = "<article class=\"editable-content $this->content_type\">$value</article>";
+			$html  = "<article class=\"editable-content $this->content_type\" data-placeholder=\"$this->placeholder\">$value</article>";
 			$html .= '<input name="' . $key . '[content]" class="editable-content-stash" type="hidden" value="' . esc_html( $value ) . '" />';
 			return $html;
 		} else {

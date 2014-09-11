@@ -6,6 +6,7 @@ class CACAP_Widget_Blog extends CACAP_Widget {
 			'name' => __( 'Blog', 'cacap' ),
 			'slug' => 'blog',
 			'content_type' => 'url',
+			'placeholder' => 'e.g., &quot;http://my-blog.com&quot;', 
 		) );
 	}
 
