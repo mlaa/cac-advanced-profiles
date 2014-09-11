@@ -6,6 +6,7 @@ class CACAP_Widget_Academic_Interests extends CACAP_Widget {
 			'name' => __( 'Academic Interests', 'cacap' ),
 			'slug' => 'academic-interests',
 			'content_type' => 'interests',
+			'placeholder' => 'A comma-separated list of your academic interests, e.g., &quot;critical theory, William Blake, Renaissance literature&quot;.',
 		) );
 	}
 
