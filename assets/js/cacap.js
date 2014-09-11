@@ -320,14 +320,15 @@ window.wp = window.wp || {};
 		 * Process clicking away from an editing area. 
 		 * This should basically do the same thing as pressing "ok." 
 		 */ 
-		function process_clickaway() { 
-			if ( is_valid( $jcw_half.find( '.editable-content' ) ) ) { 
-				$jcw_half.find( '.editable-content-stash' ).val( remove_unwanted_html_tags( $jcw_half.find( '.editable-content' ).html() ) ); //Copy new content to hidden input 
+		function process_clickaway(e) { 
+			var $target = $( '#' + currently_editing );
+			var $target_editor = $target.find( '.editable-content' );
+			if ( is_valid( $target_editor ) ) { 
+				$target.find( '.editable-content-stash' ).val( remove_unwanted_html_tags( $target_editor.html() ) ); //Copy new content to hidden input 
 			} else { 
+				e.stopPropagation();
 				return;  
-			} 	       
-			// Remove editing class
-			$jcw_half.removeClass( 'editing' );
+			} 
 
 			// Remove currently_editing toggle
 			unmark_currently_editing();
@@ -348,9 +349,6 @@ window.wp = window.wp || {};
 				// Replace the edited content with the cached value
 				$jcw_half.find( '.editable-content' ).html( widget_value_cache[ wid ] );
 			}
-
-			// Remove editing class
-			$jcw_half.removeClass( 'editing' );
 
 			// Remove currently_editing toggle
 			unmark_currently_editing();
@@ -379,9 +377,6 @@ window.wp = window.wp || {};
 				}
 			}
 
-			// Remove editing class
-			$jcw_half.removeClass( 'editing' );
-
 			// Remove currently_editing toggle
 			unmark_currently_editing();
 		}
@@ -395,9 +390,6 @@ window.wp = window.wp || {};
 			} else {
 
 			}
-
-			// Remove editing class
-			$jcw_half.removeClass( 'editing' );
 
 			// Remove currently_editing toggle
 			unmark_currently_editing();
@@ -419,9 +411,6 @@ window.wp = window.wp || {};
 		function toggle_editable() {
 			// Cache the current value of the widget, in case of Cancel
 			widget_value_cache[ wid ] = $jcw_target.html();
-
-			// Add the 'editing' class
-			$jcw_half.addClass( 'editing' );
 		}
 
 		/**
@@ -430,17 +419,12 @@ window.wp = window.wp || {};
 		function toggle_editable_rss() {
 			// Cache the current value of the widget, in case of Cancel
 			widget_value_cache[ wid ] = $jcw_half.find( 'input.cacap-edit-input' ).val();
-
-			// Add the 'editing' class
-			$jcw_half.addClass( 'editing' );
 		}
 
 		/**
 		 * Toggle editable positions widget area (when clicked).
 		 */
 		function toggle_editable_positions() {
-			// Add the 'editing' class
-			$jcw_half.addClass( 'editing' );
 		}
 
 		/**
@@ -632,18 +616,10 @@ window.wp = window.wp || {};
 				}
 
 				if ( currently_editing.length && jcw_id !== currently_editing && ! $jcw_target.closest( '.ui-autocomplete' ).length && ! $jcw_target.closest( '.hallolink-dialog' ).length ) {
-					//process_clickaway(); 
-
-					e.stopPropagation();
-
-					$currently_editing = $( '#' + currently_editing );
-
-					warn_invalid_data($currently_editing.find('.editable-content'), 'Please click "ok" or "cancel."'); 
-
-					return false;
+					process_clickaway(e); 
+				} else {
+					unwarn($jcw_half); 
 				}
-
-				unwarn($jcw_half); 
 
 				// This is not a widget click, so we can bail
 				if ( ! jcw_id.length ) {
