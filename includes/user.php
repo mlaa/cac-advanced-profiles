@@ -122,6 +122,12 @@ class CACAP_User {
 		foreach ( $xprofile_import_map as $import_from => $import_to ) { 
 			$xprofile_data = xprofile_get_field_data( $import_from, $this->user_id ); 
 			if ( $xprofile_data ) { 
+				// replacing (remaining) newlines, since Xprofile doesn't like multi-line 
+				// textboxes  (validates them against /^.*$/ which fails)
+				if ( ('Interests' == $import_from ) && strpos( $xprofile_data, PHP_EOL ) ) { 
+					$xprofile_data = wpautop( $xprofile_data ); 
+					$xprofile_data = str_replace( array( "\r\n", "\r", "\n" ), '', $xprofile_data );  
+				} 
 				$this->create_widget_instance( array( 
 					'widget_type' => $import_to[0],
 					'title' => $import_to[1],
@@ -142,6 +148,7 @@ class CACAP_User {
 		// @todo error/empty checking
 
 		$widget_instance = new CACAP_Widget_Instance();
+
 		$widget_instance_data = $widget_instance->create( $r );
 
 		if ( ! empty( $widget_instance_data ) ) {
