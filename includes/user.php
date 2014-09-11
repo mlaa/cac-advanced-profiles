@@ -3,6 +3,7 @@
 class CACAP_User {
 	protected $user_id;
 	protected $widget_instances;
+	protected $imported = false; 
 
 	function __construct( $user_id = 0 ) {
 		$this->set_user_id( $user_id );
@@ -98,11 +99,37 @@ class CACAP_User {
 
 	public function get_widget_instance_data() {
 		$widget_instance_data = bp_get_user_meta( $this->user_id, 'cacap_widget_instance_data', true );
+
 		if ( ! is_array( $widget_instance_data ) ) {
 			$widget_instance_data = array();
+			$this->import_xprofile_data();
 		}
+
 		return $widget_instance_data;
 	}
+
+	/* This imports data from xprofile into CACAP, based on the map that's
+	 * hard-coded in `$xprofile_import_map`. 
+	 */ 
+	public function import_xprofile_data() { 
+		if ( $this->imported ) return; // only do this thing once 
+		$this->imported = true; 
+		$xprofile_import_map = array( 
+			'Interests' => array( 'academic-interests', 'Academic Interests' ),
+			'Blog' => array( 'blog', 'Blog' ), 
+			'<em>Twitter</em> user name' => array( 'twitter-username', '<em>Twitter</em> user name' ), 
+		); 
+		foreach ( $xprofile_import_map as $import_from => $import_to ) { 
+			$xprofile_data = xprofile_get_field_data( $import_from, $this->user_id ); 
+			if ( $xprofile_data ) { 
+				$this->create_widget_instance( array( 
+					'widget_type' => $import_to[0],
+					'title' => $import_to[1],
+					'content' => $xprofile_data,
+				) ); 
+			} 
+		} 
+	} 
 
 	public function create_widget_instance( $args = array() ) {
 		$r = wp_parse_args( $args, array(
