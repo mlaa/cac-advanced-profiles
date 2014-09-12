@@ -161,13 +161,13 @@ class CACAP_Widget_Instance {
 
 	public function edit_title() {
 		$html  = $this->widget_type->edit_title_markup( $this->value, $this->css_id );
-		$html .= $this->ok_cancel_buttons();
+		//$html .= $this->ok_cancel_buttons();
 		return $html;
 	}
 
 	public function edit_content() {
 		$html  = $this->widget_type->edit_content_markup( $this->value, $this->css_id );
-		$html .= $this->ok_cancel_buttons();
+		//$html .= $this->ok_cancel_buttons();
 		return $html;
 	}
 
