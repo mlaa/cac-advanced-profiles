@@ -9,6 +9,23 @@
 <div class="cacap-row cacap-hero-row<?php if ( cacap_is_commons_profile() ) : ?> stuck<?php endif ?>">
 	<div class="cacap-sticky-dummy">
 		<div class="cacap-hero">
+
+			<div class="cacap-avatar-buttons">
+				<?php if ( bp_is_active( 'friends' ) ) : ?>
+					<?php bp_add_friend_button( bp_displayed_user_id() ) ?>
+				<?php endif ?>
+
+				<?php if ( bp_is_active( 'messages' ) ) : ?>
+					<?php bp_send_private_message_button( bp_displayed_user_id() ) ?>
+				<?php endif ?>
+
+				<?php if ( bp_is_active( 'activity' ) ) : ?>
+					<?php bp_send_public_message_button( bp_displayed_user_id() ) ?>
+				<?php endif ?>
+
+				<?php do_action( 'cacap_avatar_actions' ) ?>
+			</div>
+
 			<div class="cacap-avatar">
 				<?php if ( bp_is_my_profile() ) : ?>
 					<a href="<?php echo bp_displayed_user_domain() ?>profile/change-avatar">
@@ -27,26 +44,11 @@
 					</a>
 				<?php endif ?>
 
-				<div class="cacap-avatar-buttons mini">
-					<?php if ( bp_is_active( 'friends' ) ) : ?>
-						<?php bp_add_friend_button( bp_displayed_user_id() ) ?>
-					<?php endif ?>
-
-					<?php if ( bp_is_active( 'messages' ) ) : ?>
-						<?php bp_send_private_message_button( bp_displayed_user_id() ) ?>
-					<?php endif ?>
-
-					<?php if ( bp_is_active( 'activity' ) ) : ?>
-						<?php bp_send_public_message_button( bp_displayed_user_id() ) ?>
-					<?php endif ?>
-
-					<?php do_action( 'cacap_avatar_actions' ) ?>
-				</div>
-
 			</div>
 			<h1>
 				<a href="<?php echo bp_displayed_user_domain() ?>"><?php echo xprofile_get_field_data( 1, bp_displayed_user_id() ) ?></a>
 			</h1>
+
 			<div class="activity">
 				<?php bp_last_activity( bp_displayed_user_id() ) ?>. <a href="<?php echo bp_displayed_user_domain() . _('activity') ?>">View this member's Commons activity.</a>
 			</div>

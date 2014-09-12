@@ -335,6 +335,9 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 		font-weight: 300;
 		margin: 17px 0 14px;
 	}
+	.cacap-long-aboutme { 
+		margin-left: 33%; /* in case there are long lines above that cause this line to be flush-left */ 
+	} 
 
 	.cacap-avatar {
 		width: 225px;
@@ -350,6 +353,9 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 	.cacap-avatar-buttons {
 		float: right;
 		width: 175px;
+		text-align: right;
+		margin-top: 25px;
+
 		&.mini a { 
 			font-size: 0; /* no text */ 
 			padding: 7px; 
@@ -436,9 +442,11 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 	}
 }
 
-#cacap-widget-list .field-visibility-settings-toggle { 
-	margin-left: 38%;
-	margin-bottom: 18px; 
+#cacap-widget-list { 
+	.field-visibility-settings-toggle, .field-visiblity-settings { 
+		margin-left: 38%;
+		margin-bottom: 18px; 
+	} 
 } 
 
 #cacap-tabs {
