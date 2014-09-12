@@ -6,7 +6,7 @@ class CACAP_Widget_Twitter_Username extends CACAP_Widget {
 			'name' => __( '<em>Twitter</em> User Name', 'cacap' ),
 			'slug' => 'twitter-username',
 			'content_type' => 'twitter_username',
-			'placeholder' => 'Your twitter username, without the @ symbol, e.g., &quot;wfaulkner&quot;', 
+			'placeholder' => 'Your twitter username, without the @ symbol. Ours is &quot;MLACommons&quot;', 
 		) );
 	}
 
