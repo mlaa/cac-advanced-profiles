@@ -71,12 +71,19 @@
 
 					<?php do_action( 'bp_custom_profile_edit_fields_pre_visibility' ); ?>
 
+					<?php $xprofile_field_id = xprofile_get_field_id_from_name( $widget_instance->widget_type->name ); ?> 
+					<?php echo "Field name is: " . $widget_instance->widget_type->name . " with id: " . $xprofile_field_id ; ?> 
+
 					<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) ) : ?>
-						<p class="field-visibility-settings-toggle" id="field-visibility-settings-toggle-<?php bp_the_profile_field_id() ?>">
-							<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'buddypress' ), bp_get_the_profile_field_visibility_level_label() ) ?> <a href="#" class="visibility-toggle-link"><?php _e( 'Change', 'buddypress' ); ?></a>
+						<p class="field-visibility-settings-toggle" id="field-visibility-settings-toggle-<?php echo $xprofile_field_id; ?>">
+							<?php $visibility_level_label = bp_get_the_profile_field_visibility_level_label( xprofile_get_field_visibility_level( $xprofile_field_id, bp_displayed_user_id() ) ); ?> 
+							<?php _log( 'visibility level: ' ); ?>  
+							<?php _log( xprofile_get_field_visibility_level( $xprofile_field_id, bp_displayed_user_id() ) ); ?>  
+							<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'buddypress' ), $visibility_level_label ) ?> <a href="#" class="visibility-toggle-link"><?php _e( 'Change', 'buddypress' ); ?></a>
+
 						</p>
 
-						<div class="field-visibility-settings" id="field-visibility-settings-<?php bp_the_profile_field_id() ?>">
+						<div class="field-visibility-settings" id="field-visibility-settings-<?php echo $xprofile_field_id; ?>">
 							<fieldset>
 								<legend><?php _e( 'Who can see this field?', 'buddypress' ) ?></legend>
 
@@ -86,7 +93,7 @@
 							<a class="field-visibility-settings-close" href="#"><?php _e( 'Close', 'buddypress' ) ?></a>
 						</div>
 					<?php else : ?>
-						<div class="field-visibility-settings-notoggle" id="field-visibility-settings-toggle-<?php bp_the_profile_field_id() ?>">
+						<div class="field-visibility-settings-notoggle" id="field-visibility-settings-toggle-<?php echo $xprofile_field_id; ?>">
 							<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'buddypress' ), bp_get_the_profile_field_visibility_level_label() ) ?>
 						</div>
 					<?php endif ?>
