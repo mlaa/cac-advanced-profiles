@@ -76,10 +76,17 @@
 
 					<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) ) : ?>
 						<p class="field-visibility-settings-toggle" id="field-visibility-settings-toggle-<?php echo $xprofile_field_id; ?>">
-							<?php $visibility_level_label = bp_get_the_profile_field_visibility_level_label( xprofile_get_field_visibility_level( $xprofile_field_id, bp_displayed_user_id() ) ); ?> 
-							<?php _log( 'visibility level: ' ); ?>  
-							<?php _log( xprofile_get_field_visibility_level( $xprofile_field_id, bp_displayed_user_id() ) ); ?>  
-							<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'buddypress' ), $visibility_level_label ) ?> <a href="#" class="visibility-toggle-link"><?php _e( 'Change', 'buddypress' ); ?></a>
+							<?php $visibility_level = xprofile_get_field_visibility_level( $xprofile_field_id, bp_displayed_user_id() ); ?> 
+							<?php $fields = bp_xprofile_get_visibility_levels(); ?> 
+							<?php $visibility_level_label = $fields[$visibility_level]['label'] ?> 
+							<?php global $field; 
+							_log( 'field is: ' ); 
+							_log( $field ); ?> 
+
+							<?php echo 'visibility level: ' . $visibility_level; ?>  
+							<?php echo 'visibility level label:'. $visibility_level_label; ?> 
+
+							<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'buddypress' ), $visibility_level_label ); ?> <a href="#" class="visibility-toggle-link"><?php _e( 'Change', 'buddypress' ); ?></a>
 
 						</p>
 
