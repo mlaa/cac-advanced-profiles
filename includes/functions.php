@@ -111,6 +111,11 @@ function cacap_field_is_visible_for_user( $field_id = 0, $displayed_user_id = 0,
 	return ! in_array( $field_id, $hidden_fields_for_user );
 }
 
+function cacap_user_can_view_widget() {   
+	// @todo: finish this
+	return true; 
+} 
+
 function cacap_sanitize_content( $content ) {
 	return wp_kses( $content, array(
 		'a' => array(

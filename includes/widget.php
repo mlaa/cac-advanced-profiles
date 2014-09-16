@@ -82,9 +82,6 @@ abstract class CACAP_Widget {
 			'visibility' => '',
 		) );
 
-		_log( 'saving instance! using data: ' ); 
-		_log( $r ); 
-
 		if ( ! $r['user_id'] ) {
 			return false;
 		}
@@ -108,11 +105,6 @@ abstract class CACAP_Widget {
 
 		// Set visibility of new field
 		$vis_out = xprofile_set_field_visibility_level( $field_id, $r['user_id'], $r['visibility'] ); 
-		if ( ! $vis_out ) {  
-			_log( 'Something went wrong when trying to set the field visibility level!' ); 
-			_log( 'Here\'s the output:' ); 
-			_log( $vis_out ); 
-		} 
 
 		if ( xprofile_set_field_data( $field_id, absint( $r['user_id'] ), $r['content'] ) ) {
 			return CACAP_Widget_Instance::format_instance( array(
@@ -131,7 +123,6 @@ abstract class CACAP_Widget {
 			'user_id' => 0,
 			'key' => null,
 		) );
-
 		return xprofile_get_field_data( $this->name, absint( $r['user_id'] ) );
 	}
 
