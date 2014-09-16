@@ -95,7 +95,27 @@
 							<?php _log( 'now running radio buttons with id: ' ); ?> 
 							<?php _log( $xprofile_field_id ); ?> 
 
-							<?php bp_profile_visibility_radio_buttons( $radio_args ) ?>
+							<?php //bp_profile_visibility_radio_buttons( $radio_args ) ?>
+
+<?php echo '<ul class="radio">'; ?> 
+			<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) ) : ?>
+
+				<?php foreach( bp_xprofile_get_visibility_levels() as $level ) : ?>
+
+					<?php printf( '<li class="%s">', esc_attr( $level['id'] ) ); ?>
+
+					<label for="<?php echo esc_attr( 'see-field_' . $xprofile_field_id . '_' . $level['id'] ); ?>">
+						<input type="radio" id="<?php echo esc_attr( 'see-field_' . $xprofile_field_id . '_' . $level['id'] ); ?>" name="<?php echo esc_attr( $widget_instance->widget_type->slug . '[visibility]' ); ?>" value="<?php echo esc_attr( $level['id'] ); ?>" <?php checked( $level['id'], bp_get_the_profile_field_visibility_level() ); ?> />
+						<span class="field-visibility-text"><?php echo esc_html( $level['label'] ); ?></span>
+					</label>
+
+					<?php echo '</li>'; ?>
+
+				<?php endforeach; ?>
+
+			<?php endif; ?> 
+
+<?php echo '</ul>'; ?> 
 
 						</fieldset>
 						<a class="field-visibility-settings-close" href="#"><?php _e( 'Close', 'buddypress' ) ?></a>
