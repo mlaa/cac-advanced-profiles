@@ -165,6 +165,7 @@ class CACAP_User {
 			'widget_type' => '',
 			'title'       => '',
 			'content'     => '',
+			'visibility'  => '',
 		) );
 
 		$r['user_id'] = $this->user_id;
@@ -173,6 +174,7 @@ class CACAP_User {
 			'key'         => $r['key'],
 			'widget_type' => $r['widget_type'],
 			'user_id'     => $r['user_id'],
+			'visibility'  => $r['visibility'],
 		) );
 
 		// todo - what if it's new
@@ -181,6 +183,7 @@ class CACAP_User {
 			'user_id' => $widget_instance->user_id,
 			'title' => $r['title'],
 			'content' => $r['content'],
+			'visibility' => $r['visibility'],
 		) );
 	}
 

@@ -69,42 +69,43 @@
 
 				<!-- Visibility Stuff --> 
 
-					<?php do_action( 'bp_custom_profile_edit_fields_pre_visibility' ); ?>
+				<?php do_action( 'bp_custom_profile_edit_fields_pre_visibility' ); ?>
 
-					<?php $xprofile_field_id = xprofile_get_field_id_from_name( $widget_instance->widget_type->name ); ?> 
-					<?php echo "Field name is: " . $widget_instance->widget_type->name . " with id: " . $xprofile_field_id ; ?> 
+				<?php $xprofile_field_id = xprofile_get_field_id_from_name( $widget_instance->widget_type->name ); ?> 
+				<?php echo "Field name is: " . $widget_instance->widget_type->name . " with id: " . $xprofile_field_id ; ?> 
 
-					<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) ) : ?>
-						<p class="field-visibility-settings-toggle" id="field-visibility-settings-toggle-<?php echo $xprofile_field_id; ?>">
-							<?php $visibility_level = xprofile_get_field_visibility_level( $xprofile_field_id, bp_displayed_user_id() ); ?> 
-							<?php $fields = bp_xprofile_get_visibility_levels(); ?> 
-							<?php $visibility_level_label = $fields[$visibility_level]['label'] ?> 
-							<?php global $field; 
-							_log( 'field is: ' ); 
-							_log( $field ); ?> 
+				<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) ) : ?>
+					<p class="field-visibility-settings-toggle" id="field-visibility-settings-toggle-<?php echo $xprofile_field_id; ?>">
+						<?php $visibility_level = xprofile_get_field_visibility_level( $xprofile_field_id, bp_displayed_user_id() ); ?> 
+						<?php $fields = bp_xprofile_get_visibility_levels(); ?> 
+						<?php $visibility_level_label = $fields[$visibility_level]['label'] ?> 
 
-							<?php echo 'visibility level: ' . $visibility_level; ?>  
-							<?php echo 'visibility level label:'. $visibility_level_label; ?> 
+						<?php echo 'visibility level: ' . $visibility_level; ?>  
+						<?php echo 'visibility level label:'. $visibility_level_label; ?> 
 
-							<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'buddypress' ), $visibility_level_label ); ?> <a href="#" class="visibility-toggle-link"><?php _e( 'Change', 'buddypress' ); ?></a>
+						<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'buddypress' ), $visibility_level_label ); ?> <a href="#" class="visibility-toggle-link"><?php _e( 'Change', 'buddypress' ); ?></a>
 
-						</p>
+					</p>
 
-						<div class="field-visibility-settings" id="field-visibility-settings-<?php echo $xprofile_field_id; ?>">
-							<fieldset>
-								<legend><?php _e( 'Who can see this field?', 'buddypress' ) ?></legend>
+					<div class="field-visibility-settings" id="field-visibility-settings-<?php echo $xprofile_field_id; ?>">
+						<fieldset>
+							<legend><?php _e( 'Who can see this field?', 'buddypress' ) ?></legend>
 
-								<?php bp_profile_visibility_radio_buttons() ?>
+							<?php $radio_args = array( 'field_id' => $xprofile_field_id, ); ?> 
+							<?php _log( 'now running radio buttons with id: ' ); ?> 
+							<?php _log( $xprofile_field_id ); ?> 
 
-							</fieldset>
-							<a class="field-visibility-settings-close" href="#"><?php _e( 'Close', 'buddypress' ) ?></a>
-						</div>
-					<?php else : ?>
-						<div class="field-visibility-settings-notoggle" id="field-visibility-settings-toggle-<?php echo $xprofile_field_id; ?>">
-							<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'buddypress' ), bp_get_the_profile_field_visibility_level_label() ) ?>
-						</div>
-					<?php endif ?>
+							<?php bp_profile_visibility_radio_buttons( $radio_args ) ?>
 
+						</fieldset>
+						<a class="field-visibility-settings-close" href="#"><?php _e( 'Close', 'buddypress' ) ?></a>
+					</div>
+				<?php else : ?>
+					<div class="field-visibility-settings-notoggle" id="field-visibility-settings-toggle-<?php echo $xprofile_field_id; ?>">
+						<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'buddypress' ), bp_get_the_profile_field_visibility_level_label() ) ?>
+					</div>
+				<?php endif ?>
+					
 				<!-- End Visibility Stuff --> 
 			</li>
 		<?php endforeach; ?>
@@ -124,5 +125,4 @@
 		</div>
 	<?php endif ?>
 </div>
-
 

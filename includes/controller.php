@@ -49,6 +49,9 @@ class CACAP_Controller {
 				}
 			}
 
+			_log( 'submitted stuff here:' ); 
+			_log( $submitted ); 
+
 			$user = new CACAP_User( bp_displayed_user_id() );
 			$result = $user->save_fields( $submitted );
 		}
@@ -209,9 +212,35 @@ class CACAP_Controller {
 	public function save_profile_data() {
 		$user = new CACAP_User( bp_displayed_user_id() );
 
+		_log( 'post is: ' ); 
+		_log( $_POST ); 
+
 		// Widget order
 		if ( isset( $_POST['cacap-widget-order'] ) ) {
 			$user->save_widget_order( $_POST['cacap-widget-order'] );
+		}
+
+		foreach( $_POST as $postkey => $postvalue ) { 
+			if ( strpos( $postkey, 'visibility' ) ) { 
+				// key is something like field_10_visibility
+				// save this data in xprofile visibility settings
+				
+				$begin = strpos( $postkey, '_' ); 
+				$end = strrpos( $postkey, '_' ); 
+
+				$field_id = substr( $postkey, $begin+1, $end-$begin-1 ); 
+
+				_log( 'field_id is: ' ); 
+				_log( $field_id ); 
+				
+				// Set visibility of new field
+				$vis_out = xprofile_set_field_visibility_level( $field_id, bp_displayed_user_id(), $postvalue ); 
+				if ( ! $vis_out ) {  
+					_log( 'Something went wrong when trying to set the field visibility level!' ); 
+					_log( 'Here\'s the output:' ); 
+					_log( $vis_out ); 
+				} 
+			}
 		}
 
 		// The widgets themselves
@@ -244,6 +273,7 @@ class CACAP_Controller {
 				$title       = isset( $_POST[ $key ]['title'] ) ? $_POST[ $key ]['title'] : '';
 				$content     = isset( $_POST[ $key ]['content'] ) ? $_POST[ $key ]['content'] : '';
 				$widget_type = isset( $_POST[ $key ]['widget_type'] ) ? $_POST[ $key ]['widget_type'] : '';
+				$visibility = isset( $_POST[ $key ]['visibility'] ) ? $_POST[ $key ]['visibility'] : '';
 
 				// In some cases, such as College, fields may
 				// be empty because it's not intended to be
@@ -259,6 +289,7 @@ class CACAP_Controller {
 						'widget_type' => $widget_type,
 						'title'       => $title,
 						'content'     => $content,
+						'visibility'  => $visibility, 
 					) );
 				} else {
 					$user->save_widget_instance( array(
@@ -266,6 +297,7 @@ class CACAP_Controller {
 						'widget_type' => $widget_type,
 						'title'       => $title,
 						'content'     => $content,
+						'visibility'  => $visibility, 
 					) );
 				}
 			}
