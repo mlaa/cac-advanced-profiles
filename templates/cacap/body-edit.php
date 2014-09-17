@@ -73,9 +73,26 @@
 
 				<?php $xprofile_field_id = xprofile_get_field_id_from_name( $widget_instance->widget_type->name ); ?> 
 
+
 				<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) ) : ?>
 					<p class="field-visibility-settings-toggle" id="field-visibility-settings-toggle-<?php echo $xprofile_field_id; ?>">
-						<?php $visibility_level = xprofile_get_field_visibility_level( $xprofile_field_id, bp_displayed_user_id() ); ?> 
+
+
+						<?php if ( ! $xprofile_field_id ) { // this is probably a Text widget with the visibility stored in user meta
+							_log( ' no xprofile field id!!! ' ); 
+							_log( ' widget instance: ' ); 
+							_log( $widget_instance ); 
+							_log( 'widget value: ' ); 
+							_log( $widget_instance->value ); 
+							$visibility_level = $widget_instance->value['visibility']; 
+							_log( ' visibility is: ' ); 
+							_log( $visibility_level ); 
+							$xprofile_field_id = 0; // placeholder ID
+						} else { // this is probably an oridinary widget with visibility stored in xprofile tables
+							$visibility_level = xprofile_get_field_visibility_level( $xprofile_field_id, bp_displayed_user_id() ); 
+						} 
+						?> 
+
 						<?php $fields = bp_xprofile_get_visibility_levels(); ?> 
 						<?php $visibility_level_label = $fields[$visibility_level]['label'] ?> 
 						<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'buddypress' ), $visibility_level_label ); ?> <a href="#" class="visibility-toggle-link"><?php _e( 'Change', 'buddypress' ); ?></a>
@@ -92,12 +109,12 @@
 						<?php echo '<ul class="radio">'; ?> 
 									<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) ) : ?>
 
-										<?php foreach( bp_xprofile_get_visibility_levels() as $level ) : ?>
+										<?php foreach( $fields as $level ) : ?>
 
 											<?php printf( '<li class="%s">', esc_attr( $level['id'] ) ); ?>
 
 											<label for="<?php echo esc_attr( 'see-field_' . $xprofile_field_id . '_' . $level['id'] ); ?>">
-												<input type="radio" id="<?php echo esc_attr( 'see-field_' . $xprofile_field_id . '_' . $level['id'] ); ?>" name="<?php echo esc_attr( $widget_instance->widget_type->slug . '[visibility]' ); ?>" value="<?php echo esc_attr( $level['id'] ); ?>" <?php checked( $level['id'], $visibility_level ); ?> />
+												<input type="radio" id="<?php echo esc_attr( 'see-field_' . $xprofile_field_id . '_' . $level['id'] ); ?>" name="<?php echo esc_attr( $widget_instance->css_id . '[visibility]' ); ?>" value="<?php echo esc_attr( $level['id'] ); ?>" <?php checked( $level['id'], $visibility_level ); ?> />
 												<span class="field-visibility-text"><?php echo esc_html( $level['label'] ); ?></span>
 											</label>
 

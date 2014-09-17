@@ -23,10 +23,11 @@ class CACAP_Widget_Text extends CACAP_Widget {
 	 */
 	public function save_instance_for_user( $args = array() ) {
 		$r = wp_parse_args( $args, array(
-			'key' => '',
-			'user_id' => 0,
-			'title' => '',
-			'content' => '',
+			'key'        => '',
+			'user_id'    => 0,
+			'title'      => '',
+			'content'    => '',
+			'visibility' => 'public', 
 		) );
 
 		// @todo better error reporting
@@ -41,12 +42,15 @@ class CACAP_Widget_Text extends CACAP_Widget {
 		$meta_value = array(
 			'title' => $r['title'],
 			'content' => $r['content'],
+			'visibility' => $r['visibility'], 
 		);
 
 		// @todo - uniqueness? what about updating existing?
 		$meta_key = empty( $r['key'] ) ? 'cacap_widget_instance_' . sanitize_title_with_dashes( $r['title'] ) : $r['key'];
 
 		if ( update_user_meta( $r['user_id'], $meta_key, $meta_value ) ) {
+			_log( 'text widget saved successfully! value:' ); 
+			_log( $meta_value  );
 			return CACAP_Widget_Instance::format_instance( array(
 				'user_id' => $r['user_id'],
 				'key' => $meta_key,

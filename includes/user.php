@@ -142,6 +142,7 @@ class CACAP_User {
 			'widget_type' => '',
 			'title' => '',
 			'content' => '',
+			'visibility' => '', 
 		) );
 
 		$r['user_id'] = $this->user_id;

@@ -111,6 +111,7 @@ class CACAP_Widget_Instance {
 			'widget_type' => '',
 			'title' => '',
 			'content' => '',
+			'visibility' => '',
 		) );
 
 		$types = cacap_widget_types();

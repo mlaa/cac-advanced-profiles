@@ -79,12 +79,14 @@ class CACAP_Controller {
 
 			$title = isset( $_POST['cacap-new-widget-title'] ) ? $_POST['cacap-new-widget-title'] : '';
 			$content = isset( $_POST['cacap-new-widget-content'] ) ? $_POST['cacap-new-widget-content'] : '';
+			$visibility = isset( $_POST['cacap-new-widget-visibility'] ) ? $_POST['cacap-new-widget-visibility'] : '';
 
 			$user = new CACAP_User( bp_displayed_user_id() );
 			$result = $user->create_widget_instance( array(
 				'widget_type' => $widget_type,
 				'title' => $title,
 				'content' => $content,
+				'visibility' => $visibility, 
 			) );
 		}
 	}
@@ -230,8 +232,10 @@ class CACAP_Controller {
 
 				$field_id = substr( $postkey, $begin+1, $end-$begin-1 ); 
 
-				_log( 'field_id is: ' ); 
-				_log( $field_id ); 
+				/*
+				 *_log( 'field_id is: ' ); 
+				 *_log( $field_id ); 
+				 */
 				
 				// Set visibility of new field
 				$vis_out = xprofile_set_field_visibility_level( $field_id, bp_displayed_user_id(), $postvalue ); 
