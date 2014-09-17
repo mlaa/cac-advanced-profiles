@@ -44,6 +44,58 @@
 					<div class="cacap-widget-content cacap-widget-section-editable cacap-click-to-edit"><?php echo $wi_prototype->edit_content() ?></div>
 					<input type="hidden" value="<?php echo esc_attr( $wi_prototype->widget_type->slug ) ?>" name="<?php echo esc_attr( $wi_prototype->css_id ) ?>[widget_type]" />
 					<a href="#" class="cacap-widget-remove button confirm"><?php _e( 'Remove', 'cacap' ) ?></a>
+
+					<!-- Visibility Stuff! --> 	
+
+				<?php do_action( 'bp_custom_profile_edit_fields_pre_visibility' ); ?>
+
+				<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) ) : ?>
+
+					<?php $xprofile_field_id = 0; // placeholder ID ?> 
+
+					<p class="field-visibility-settings-toggle" id="field-visibility-settings-toggle-<?php echo $xprofile_field_id; ?>">
+
+						<?php $visibility_level = 'public'; // default to public ?> 
+						<?php $fields = bp_xprofile_get_visibility_levels(); ?> 
+						<?php $visibility_level_label = $fields[$visibility_level]['label'] ?> 
+						<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'buddypress' ), $visibility_level_label ); ?> <a href="#" class="visibility-toggle-link"><?php _e( 'Change', 'buddypress' ); ?></a>
+
+					</p>
+
+					<div class="field-visibility-settings" id="field-visibility-settings-<?php echo $xprofile_field_id; ?>">
+						<fieldset>
+							<legend><?php _e( 'Who can see this field?', 'buddypress' ) ?></legend>
+
+						<ul class="radio">
+									<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) ) : ?>
+
+										<?php foreach( $fields as $level ) : ?>
+
+											<?php printf( '<li class="%s">', esc_attr( $level['id'] ) ); ?>
+
+											<label for="<?php echo esc_attr( 'see-field_' . $xprofile_field_id . '_' . $level['id'] ); ?>">
+												<input type="radio" id="<?php echo esc_attr( 'see-field_' . $xprofile_field_id . '_' . $level['id'] ); ?>" name="<?php echo esc_attr( $widget_instance->css_id . '[visibility]' ); ?>" value="<?php echo esc_attr( $level['id'] ); ?>" <?php checked( $level['id'], $visibility_level ); ?> />
+												<span class="field-visibility-text"><?php echo esc_html( $level['label'] ); ?></span>
+											</label>
+
+											<?php echo '</li>'; ?>
+
+										<?php endforeach; ?>
+
+									<?php endif; ?> 
+
+						</ul> 
+						</fieldset>
+						<a class="field-visibility-settings-close" href="#"><?php _e( 'Close', 'buddypress' ) ?></a>
+					</div>
+				<?php else : ?>
+					<div class="field-visibility-settings-notoggle" id="field-visibility-settings-toggle-<?php echo $xprofile_field_id; ?>">
+						<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'buddypress' ), bp_get_the_profile_field_visibility_level_label() ) ?>
+					</div>
+				<?php endif ?>
+					
+				<!-- End Visibility Stuff --> 
+
 				</div>
 
 			<?php endforeach ?>
