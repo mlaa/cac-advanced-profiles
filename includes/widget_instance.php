@@ -15,6 +15,7 @@ class CACAP_Widget_Instance {
 	public $key;
 	public $value;
 	public $position;
+	public $visibility;
 
 	/**
 	 * Constructor
@@ -53,6 +54,12 @@ class CACAP_Widget_Instance {
 
 			$this->position = isset( $data['position'] ) ? intval( $data['position'] ) : 50;
 			$this->css_id = $this->get_css_id();
+
+			if ( ! empty( $data['visibility'] ) ) {
+				$this->visibility = $data['visibility'];
+			} else { 
+				$this->visibility = $this->get_visibility(); 
+			} 
 		}
 	}
 
@@ -139,6 +146,18 @@ class CACAP_Widget_Instance {
 	public function get_display_value() {
 		return $this->widget_type->get_display_value_from_value( $this->value );
 	}
+
+	/**
+	 * Return the visibility of a widget. 
+	 *
+	 * @return string
+	 */ 
+	public function get_visibility() { 
+		$xprofile_field_id = xprofile_get_field_id_from_name( $this->widget_type->name );
+		$visibility_level = xprofile_get_field_visibility_level( $xprofile_field_id, $this->user_id ); 
+		return $visibility_level; 
+	} 
+
 
 	/**
 	 * Return the markup for displaying the public view of the title

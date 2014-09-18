@@ -131,14 +131,7 @@
 
 
 						<?php if ( ! $xprofile_field_id ) { // this is probably a Text widget with the visibility stored in user meta
-							_log( ' no xprofile field id!!! ' ); 
-							_log( ' widget instance: ' ); 
-							_log( $widget_instance ); 
-							_log( 'widget value: ' ); 
-							_log( $widget_instance->value ); 
 							$visibility_level = $widget_instance->value['visibility']; 
-							_log( ' visibility is: ' ); 
-							_log( $visibility_level ); 
 							$xprofile_field_id = 0; // placeholder ID
 						} else { // this is probably an oridinary widget with visibility stored in xprofile tables
 							$visibility_level = xprofile_get_field_visibility_level( $xprofile_field_id, bp_displayed_user_id() ); 

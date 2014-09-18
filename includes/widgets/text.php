@@ -49,8 +49,6 @@ class CACAP_Widget_Text extends CACAP_Widget {
 		$meta_key = empty( $r['key'] ) ? 'cacap_widget_instance_' . sanitize_title_with_dashes( $r['title'] ) : $r['key'];
 
 		if ( update_user_meta( $r['user_id'], $meta_key, $meta_value ) ) {
-			_log( 'text widget saved successfully! value:' ); 
-			_log( $meta_value  );
 			return CACAP_Widget_Instance::format_instance( array(
 				'user_id' => $r['user_id'],
 				'key' => $meta_key,

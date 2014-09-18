@@ -111,9 +111,38 @@ function cacap_field_is_visible_for_user( $field_id = 0, $displayed_user_id = 0,
 	return ! in_array( $field_id, $hidden_fields_for_user );
 }
 
-function cacap_user_can_view_widget() {   
-	// @todo: finish this
-	return true; 
+/**
+ * Determines whether a user can view a widget. 
+ * Accepts visibility from the widget instance, 
+ * i.e. $widget_instance->visibility
+ *
+ * @param string visibility
+ */ 
+function cacap_user_can_view_widget( $visibility ) {   
+	$current_user = bp_loggedin_user_id();   
+	$displayed_user = bp_displayed_user_id();  
+	$is_friend = friends_check_friendship( $current_user, $displayed_user ); 
+	
+	if ( $current_user ) { 
+		// User is logged in. 
+		if ( $current_user == $displayed_user ) { 
+			// User is looking at own profile. 
+			// Everything's cool. 
+			return true; 
+		} else { 
+			// User is looking at someone else's profile. 
+			// Friend or foe? 
+			if ( $is_friend ) { 
+				return ( in_array( $visibility, array( 'public', 'loggedin', 'friends' ) ) ) ? true : false; 
+			} else { 
+				return ( in_array( $visibility, array( 'public', 'loggedin' ) ) )  ? true : false; 
+			} 
+		} 
+
+	} else { 
+		// User isn't logged in, only show public widgets
+		return ( 'public' == $visibility ) ? true : false; 
+	} 
 } 
 
 function cacap_sanitize_content( $content ) {

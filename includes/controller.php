@@ -49,9 +49,6 @@ class CACAP_Controller {
 				}
 			}
 
-			_log( 'submitted stuff here:' ); 
-			_log( $submitted ); 
-
 			$user = new CACAP_User( bp_displayed_user_id() );
 			$result = $user->save_fields( $submitted );
 		}
@@ -214,9 +211,6 @@ class CACAP_Controller {
 	public function save_profile_data() {
 		$user = new CACAP_User( bp_displayed_user_id() );
 
-		_log( 'post is: ' ); 
-		_log( $_POST ); 
-
 		// Widget order
 		if ( isset( $_POST['cacap-widget-order'] ) ) {
 			$user->save_widget_order( $_POST['cacap-widget-order'] );
@@ -231,19 +225,9 @@ class CACAP_Controller {
 				$end = strrpos( $postkey, '_' ); 
 
 				$field_id = substr( $postkey, $begin+1, $end-$begin-1 ); 
-
-				/*
-				 *_log( 'field_id is: ' ); 
-				 *_log( $field_id ); 
-				 */
 				
 				// Set visibility of new field
 				$vis_out = xprofile_set_field_visibility_level( $field_id, bp_displayed_user_id(), $postvalue ); 
-				if ( ! $vis_out ) {  
-					_log( 'Something went wrong when trying to set the field visibility level!' ); 
-					_log( 'Here\'s the output:' ); 
-					_log( $vis_out ); 
-				} 
 			}
 		}
 

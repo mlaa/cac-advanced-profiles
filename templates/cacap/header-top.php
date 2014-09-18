@@ -4,7 +4,7 @@
  */
 ?>
 
-<?php if ( ! bp_locate_template( 'templates/parts/header-banner.php', true ) ) _log( "Couldn't find header-head.php!" ); ?>
+<?php bp_locate_template( 'templates/parts/header-banner.php' ); ?>
 
 <div class="cacap-row cacap-hero-row<?php if ( cacap_is_commons_profile() ) : ?> stuck<?php endif ?>">
 	<div class="cacap-sticky-dummy">
