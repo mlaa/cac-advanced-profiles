@@ -234,7 +234,7 @@ class CACAP_Widget_Positions extends CACAP_Widget {
 
 				$markup .=   '<tr>';
 				$markup .=     '<td>';
-				$markup .=     '<label for="' . esc_attr( $key ) . '_college">' . __( 'College', 'cacap' ) . '</label>';
+				$markup .=     '<label for="' . esc_attr( $key ) . '_college">' . __( 'Institution', 'cacap' ) . '</label>';
 				$markup .=     '</td>';
 
 				$markup .=     '<td>';
@@ -280,7 +280,7 @@ class CACAP_Widget_Positions extends CACAP_Widget {
 
 		$markup .=   '<tr>';
 		$markup .=     '<td>';
-		$markup .=     '<label for="cacap-position-new-college">' . __( 'College', 'cacap' ) . '</label>';
+		$markup .=     '<label for="cacap-position-new-college">' . __( 'Institution', 'cacap' ) . '</label>';
 		$markup .=     '</td>';
 
 		$markup .=     '<td>';
