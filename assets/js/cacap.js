@@ -721,6 +721,16 @@ window.wp = window.wp || {};
 			$about_you_gloss.addClass( class_to_add );
 		}
 
+		function update_visibility_fields() { 
+			/* jQuery hack to make visibility label change
+			 * when the user changes it */ 
+
+			$('.field-visibility-settings input[type=radio]').click(function(){ 
+				$(this).parents('.field-visibility-settings').siblings('.field-visibility-settings-toggle').children('.current-visibility-level').html($(this).parent().find('span').text()); 
+			}); 
+		} 
+
+
 		// Init methods to run after document is ready
 		$( document ).ready( function() {
 			init_bodyclass();
@@ -739,6 +749,7 @@ window.wp = window.wp || {};
 				bind_body_clicks();
 				bind_widget_clicks_delete();
 				bind_submit_clicks();
+				update_visibility_fields(); 
 			}
 		});
 	}
