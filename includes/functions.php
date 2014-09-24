@@ -294,3 +294,46 @@ function cacap_get_about_you_field() {
 	$ay_field = isset( $fields['about_you'] ) ? intval( $fields['about_you'] ) : 0;
 	return $ay_field;
 }
+
+function mla_check_member_database_for_updates() { 
+	/*
+	 *_log( 'Displayed user is: ' ); 
+	 *_log( bp_displayed_user_id() ); 
+	 *_log( 'user meta: ' ); 
+	 *_log( get_user_meta( bp_displayed_user_id() ) ); 
+	 */
+	$max_updated_interval = 3600; //update every hour
+	$displayed_user_id = bp_displayed_user_id(); 
+	$last_updated = get_user_meta( $displayed_user_id, 'last_updated');   
+	$last_updated = (integer) $last_updated[0];  //don't know why this is getting stored as an array
+	//_log( 'last_updated:' ); 
+	//_log( $last_updated ); 
+	if ( ! $last_updated ) { 
+		$too_old = true; 
+		_log( 'No last_updated time. Updating.' ); 
+	} else { 
+		$too_old = ( ( time() - $last_updated ) > $max_updated_interval ) ? true : false ; 
+	} 
+	//$too_old = true; // disable the check, forcing to update for debug reasons
+	if ( $too_old ) { 
+		$mla_member = new MLAMember(); 
+		$mla_member->user_id = $displayed_user_id; 
+		if ( $mla_member->sync() ) { 
+			_log( 'Success! Member data synced.' ); 
+			update_user_meta( $displayed_user_id, 'last_updated', time() ); // it has just been updated. Update the updated time.  
+		} else { 
+			_log( 'Something went wrong while trying to update member info from the member database.' ); 
+		} 
+	} else { 
+		// user meta has been updated from the member
+		// database recently. Nothing to see here. 
+		_log( 'User meta has been updated recently. Nothing to see here.' ); 
+	} 
+	//_log( 'user meta: ' ); 
+	//_log( get_user_meta( bp_displayed_user_id() ) ); 
+	//_log( 'xprofile fullname:' ); 
+	//_log( bp_xprofile_fullname_field_name() ); 
+	//_log( 'xprofile field data:' ); 
+	//_log( xprofile_get_field_data( bp_xprofile_fullname_field_id(), $displayed_user_id ) ); 
+} 
+add_action( 'cacap_before_content', 'mla_check_member_database_for_updates' );  
