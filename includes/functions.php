@@ -315,7 +315,7 @@ function mla_check_member_database_for_updates() {
 		$too_old = ( ( time() - $last_updated ) > $max_updated_interval ) ? true : false ; 
 	} 
 	//$too_old = true; // disable the check, forcing to update for debug reasons
-	if ( $too_old ) { 
+	$too_old = false; // disable updating for now if ( $too_old ) { 
 		$mla_member = new MLAMember(); 
 		$mla_member->user_id = $displayed_user_id; 
 		if ( $mla_member->sync() ) { 
