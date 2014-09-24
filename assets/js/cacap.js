@@ -301,6 +301,8 @@ window.wp = window.wp || {};
 					break;
 
 				default :
+					// strip HTML tags and extra whitespace
+					$target_editor.html( $target_editor.text().trim() );  
 					if ( is_valid( $target_editor ) ) { 
 						$target.find( '.editable-content-stash' ).val( remove_unwanted_html_tags( $target_editor.html() ) ); //Copy new content to hidden input 
 					} else { 
