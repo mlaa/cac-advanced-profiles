@@ -254,6 +254,10 @@ window.wp = window.wp || {};
 		function is_valid(obj) { 
 			var content = obj.html(); 
 			if ( obj.hasClass( 'url' ) ) { 
+
+				// strip HTML tags and extra whitespace
+				obj.html( obj.text().trim() );  
+
 				//validate URL
 				if ( is_valid_URL(content) ) { 
 					return true; 
@@ -263,6 +267,10 @@ window.wp = window.wp || {};
 					return false; 
 				} 
 			} else if (obj.hasClass( 'twitter_username' ) ) { 
+
+				// strip HTML tags and extra whitespace
+				obj.html( obj.text().trim() );  
+
 				if ( is_valid_twitter_username(content) ) { 
 					return true; 
 				} else { 
@@ -301,8 +309,6 @@ window.wp = window.wp || {};
 					break;
 
 				default :
-					// strip HTML tags and extra whitespace
-					$target_editor.html( $target_editor.text().trim() );  
 					if ( is_valid( $target_editor ) ) { 
 						$target.find( '.editable-content-stash' ).val( remove_unwanted_html_tags( $target_editor.html() ) ); //Copy new content to hidden input 
 					} else { 
