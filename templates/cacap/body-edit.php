@@ -41,7 +41,10 @@
 				<div id="cacap-widget-prototype-<?php echo esc_attr( $widget_type->slug ) ?>">
 					<div class="cacap-drag-handle"></div>
 					<div class="cacap-widget-title <?php if ( $widget_type->allow_custom_title ) : ?>cacap-widget-section-editable <?php endif ?>cacap-click-to-edit"><?php echo $wi_prototype->edit_title() ?></div>
-					<div class="cacap-widget-content cacap-widget-section-editable cacap-click-to-edit"><?php echo $wi_prototype->edit_content() ?></div>
+					<div class="cacap-widget-content cacap-widget-section-editable cacap-click-to-edit <?php echo $wi_prototype->widget_type->content_type; ?>"><?php echo $wi_prototype->edit_content() ?></div>
+
+<?php _log( 'widget prototype: ' ); 
+_log( $wi_prototype ); ?>  
 					<input type="hidden" value="<?php echo esc_attr( $wi_prototype->widget_type->slug ) ?>" name="<?php echo esc_attr( $wi_prototype->css_id ) ?>[widget_type]" />
 					<a href="#" class="cacap-widget-remove button confirm"><?php _e( 'Remove', 'cacap' ) ?></a>
 
