@@ -443,7 +443,7 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 }
 
 #cacap-widget-list { 
-	.field-visibility-settings-toggle, .field-visiblity-settings { 
+	.field-visibility-settings-toggle, div.field-visiblity-settings { 
 		margin-left: 38%;
 		margin-bottom: 18px; 
 	} 
@@ -526,6 +526,9 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 
 		& > div {
 			margin: $widget_tb_padding 0;
+			&.field-visibility-settings { 
+				margin-left: 38%; 
+			} 
 		}
 	}
 
