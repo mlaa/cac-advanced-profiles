@@ -80,6 +80,7 @@ abstract class CACAP_Widget {
 			'title' => $this->name,
 			'content' => '',
 			'visibility' => '',
+			'position' => '',
 		) );
 
 		if ( ! $r['user_id'] ) {
@@ -112,6 +113,7 @@ abstract class CACAP_Widget {
 				'key' => $r['title'],
 				'value' => $r['content'],
 				'widget_type' => $this->slug,
+				'position' => $r['position'],
 			) );
 		} else {
 			// phooey
