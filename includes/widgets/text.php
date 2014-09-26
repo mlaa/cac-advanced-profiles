@@ -26,6 +26,7 @@ class CACAP_Widget_Text extends CACAP_Widget {
 			'user_id' => 0,
 			'title' => '',
 			'content' => '',
+			'position'   => '', 
 		) );
 
 		// @todo better error reporting
@@ -51,6 +52,7 @@ class CACAP_Widget_Text extends CACAP_Widget {
 				'key' => $meta_key,
 				'value' => $meta_value,
 				'widget_type' => $this->slug,
+				'position' => $r['position'],
 			) );
 		} else {
 			// do something bad
