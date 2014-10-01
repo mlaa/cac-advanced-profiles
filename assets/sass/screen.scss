@@ -809,7 +809,7 @@ body.profile-edit {
 			margin-bottom: 2em;
 			padding-left: 20px;
 		}
-		input {
+		input:not([type=radio]) {
 			height: auto !important;
 			margin-top: .5em;
 			width: 300px;
