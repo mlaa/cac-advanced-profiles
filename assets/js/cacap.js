@@ -448,8 +448,12 @@ window.wp = window.wp || {};
 				$position_field.attr( 'name', $position_field.attr( 'name' ).replace( /\bnew\b/, positions_count ) );
 			} );
 
-			// Don't need a Delete button
-			$positions_fields.find( '.cacap-delete-position' ).remove();
+			// Don't allow user to delete first position (there must 
+			// be at least one) but leave delete buttons on subsequent
+			// positions. 
+			if ( 1 == positions_count ) { 
+				$positions_fields.find( '.cacap-delete-position' ).remove();
+			} 
 
 			// Add to the DOM
 			$( '.cacap-positions-positions' ).prepend( $positions_fields.wrap( '<li></li>' ) );
