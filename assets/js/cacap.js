@@ -151,6 +151,13 @@ window.wp = window.wp || {};
 			$widget_list.on( 'click', '.cacap-delete-position', function() {
 				$( this ).parent( 'li' ).remove();
 			} );
+
+
+			// Don't allow user to delete first position (there must 
+			// be at least one) but leave delete buttons on subsequent
+			// positions. 
+			$('#cacap-delete-position-1').remove(); 
+
 		}
 
 		/**
