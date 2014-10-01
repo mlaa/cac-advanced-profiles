@@ -40,15 +40,22 @@ class CACAP_Widget_Positions extends CACAP_Widget {
 		foreach ( $submitted_positions as $submitted_position ) {
 			$new_position = array();
 
+			$emptycount = 0; 
 			// Discard any incomplete entries along the way
 			// Only College is required
 			foreach ( array( 'college', 'department', 'title' ) as $type ) {
 				$new_position[ $type ] = $this->get_term_for_position( $submitted_position, $type );
 
-				if ( 'college' === $type && empty( $new_position[ $type ] ) ) {
-					continue 2;
+				if ( empty( $new_position[ $type ] ) ) {
+					$emptycount = $emptycount + 1; 
 				}
 			}
+
+			// don't allow entries that are completely empty. 
+			// Only allow those that have at least one nonempty field.
+			if ( $emptycount > 2 ) { 
+				continue; 
+			} 
 
 			$new_positions[] = $new_position;
 		}
