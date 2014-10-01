@@ -606,6 +606,17 @@ window.wp = window.wp || {};
 			} );
 		}
 
+		function bind_enterkey() { 
+			/*
+			 *$(document).keypress(function(e) { 
+			 *        if(e.which == 13) { 
+			 *                e.preventDefault(); 
+			 *                process_clickaway(); 
+			 *        } 
+			 *}); 
+			 */
+		} 
+
 		/**
 		 * Mark a widget as "currently editing"
 		 */
@@ -772,6 +783,7 @@ window.wp = window.wp || {};
 				bind_body_clicks();
 				bind_widget_clicks_delete();
 				bind_submit_clicks();
+				bind_enterkey(); 
 				update_visibility_fields(); 
 			}
 		});
