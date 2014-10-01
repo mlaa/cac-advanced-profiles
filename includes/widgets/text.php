@@ -7,8 +7,9 @@ class CACAP_Widget_Text extends CACAP_Widget {
 			'slug' => 'text',
 			'allow_custom_title' => true,
 			'allow_multiple' => true,
-			'placeholder' => 'Enter anything you like!', 
+			'placeholder' => 'Enter anything you like.', 
 		) );
+		$this->title_placeholder = 'Enter a title.'; 
 	}
 
 	/**
@@ -90,13 +91,13 @@ class CACAP_Widget_Text extends CACAP_Widget {
 
 	public function edit_title_markup( $value, $key ) {
 		$title = isset( $value['title'] ) ? $value['title'] : '';
-		$html  = '<article class="editable-content" contenteditable="true">' . $title . '</article>';
+		$html  = '<article class="editable-content" contenteditable="true" data-placeholder="'.$this->title_placeholder.'">' . $title . '</article>';
 		$html .= '<input name="' . esc_attr( $key ) . '[title]" class="editable-content-stash" type="hidden" value="' . esc_attr( $title ) . '" />';
 		return $html;
 	}
 
 	public function edit_content_markup( $value, $key ) {
-		$html  = '<article class="editable-content richtext">' . $value['content'] . '</article>';
+		$html  = '<article class="editable-content richtext" data-placeholder="'.$this->placeholder.'">' . $value['content'] . '</article>';
 		$html .= '<input name="' . esc_attr( $key ) . '[content]" class="editable-content-stash" type="hidden" value="' . esc_attr( $value['content'] ) . '" />';
 		return $html;
 	}
