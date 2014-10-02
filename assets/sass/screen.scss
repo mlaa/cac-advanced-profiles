@@ -637,6 +637,7 @@ body.profile-edit {
 		&.cacap-widget-content {
 			margin-left: 330px;
 		}
+		/* placeholders */ 
 		[contentEditable=true]:empty:not(:focus):before { 
 			content:attr(data-placeholder); 
 			color: gray; 
@@ -656,6 +657,21 @@ body.profile-edit {
 
 			article.editable-content {
 				padding: 0;
+				/*
+				 * hack to emulate single-line inputs, 
+				 * stolen from http://stackoverflow.com/a/13470210/584121  
+				 */ 
+				&.url, &.twitter_username { 
+					white-space: nowrap;
+					overflow: hidden; 
+					br { 
+						display: none; 
+					} 
+					* { 
+						display: inline; 
+						white-space: nowrap; 
+					} 
+				} 
 			}
 
 			.cacap-positions-inputs {

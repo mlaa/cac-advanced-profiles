@@ -316,6 +316,10 @@ window.wp = window.wp || {};
 					break;
 
 				default :
+					// first remove <br/>s from single-line fields
+					if ( wtype == 'blog' || wtype == 'twitter-username' ) { 
+						$target_editor.html($target_editor.html().replace(/<br>/g, '')); 
+					} 
 					if ( is_valid( $target_editor ) ) { 
 						$target.find( '.editable-content-stash' ).val( remove_unwanted_html_tags( $target_editor.html() ) ); //Copy new content to hidden input 
 					} else { 
