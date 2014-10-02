@@ -1014,3 +1014,36 @@ body.cacap .cacap-widget-content .hallotoolbar {
 		padding-left: 126px; 
 	} 
 } 
+
+
+@media only screen and (max-width: 760px) { 
+	body.cacap { 
+		.cacap-row { 
+			max-width: unset; 
+			min-width: unset; 
+			width: unset; 
+		} 
+		#cacap-header { 
+			.cacap-avatar { 
+				float: none;
+				margin: 0 auto; 
+			} 
+			.cacap-long-aboutme { 
+				margin-left: 0; 
+			} 
+			.cacap-hero-row { 
+				.cacap-edit-buttons { 
+					position: initial; 
+					text-align: center; 
+				} 
+			} 
+			h1, .cacap-short-aboutme, .cacap-long-aboutme, .activity {  
+				text-align: center; 
+			} 
+		} 
+		.cacap-widget-title, #cacap-vitals dt { 
+			width: 53%; 
+			padding-right: 38px; 
+		} 
+	} 
+} 
