@@ -1002,3 +1002,15 @@ body.cacap .cacap-widget-content .hallotoolbar {
 #cacap-user-widget-new h2 { 
 	margin-top: 0.5em; 
 } 
+
+.ui-dialog-titlebar { 
+	/* hide useless "enter Link" title and redundant "close" buttton */ 
+	display: none; 
+} 
+.ui-dialog-content { 
+	background-color: rgba(55,55,55,0.3); 
+	form { 
+		padding-top: 64px;
+		padding-left: 126px; 
+	} 
+} 

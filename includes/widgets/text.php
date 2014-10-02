@@ -7,9 +7,9 @@ class CACAP_Widget_Text extends CACAP_Widget {
 			'slug' => 'text',
 			'allow_custom_title' => true,
 			'allow_multiple' => true,
-			'placeholder' => 'Enter anything you like.', 
+			'placeholder' => 'Enter anything you like', 
 		) );
-		$this->title_placeholder = 'Enter a title.'; 
+		$this->title_placeholder = 'Enter a title'; 
 	}
 
 	/**
