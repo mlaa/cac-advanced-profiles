@@ -853,13 +853,16 @@ body.profile-edit {
 	li {
 		margin-bottom: 1.3em;
 	}
-	.cacap-positions-title {
-		font-style: italic;
-		padding-right: 20px;
-	}
+	.cacap-positions-title, .cacap-positions-department, .cacap-positions-college { 
+		margin-right: 1ex;
+		&:after { 
+			content: ","; 
+		} 
+	} 
 	.cacap-positions-college {
-		display: block;
-		margin-top: .7em;
+		&:after { 
+			content: ""; 
+		} 
 	}
 }
 
