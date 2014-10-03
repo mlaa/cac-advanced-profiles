@@ -251,6 +251,23 @@ window.wp = window.wp || {};
 		function is_valid_twitter_username(username) { 
 			return /^\w{1,32}$/.test(username) ? true : false; 
 		} 
+
+		/* Checks whether Free Entry widgets are valid 
+		 * (i.e. nonempty), for issue #64. Is a top-level
+		 * is_valid function, because the incoming object doesn't
+		 * have a class of "text" or "free entry," so we have to 
+		 * start with assuming that it's a free entry widget. 
+		 */ 
+		function is_valid_free_entry(obj) { 
+			var content = obj.html(); 
+			if ( content.length ) { 
+				return true; 
+			} else { 
+				message = "Please enter something."; 
+				warn_invalid_data(obj, message);
+				return false; 
+			} 
+		} 
 		/**
 		 * Validate data like URLs. 
 		 * First, checks whether object has a content type of 'url',
@@ -259,6 +276,7 @@ window.wp = window.wp || {};
 		 * Defaults to true. 
 		 */ 
 		function is_valid(obj) { 
+			console.debug(obj); 
 			var content = obj.html(); 
 			if ( obj.hasClass( 'url' ) ) { 
 
@@ -315,6 +333,14 @@ window.wp = window.wp || {};
 					process_rss($target);
 					break;
 
+				case 'text' : 
+					if ( is_valid_free_entry( $target_editor ) ) { 
+						$target.find( '.editable-content-stash' ).val( remove_unwanted_html_tags( $target_editor.html() ) ); //Copy new content to hidden input 
+					} else { 
+						e.stopPropagation();
+						return;  
+					} 
+					break;
 				default :
 					// first remove <br/>s from single-line fields
 					if ( wtype == 'blog' || wtype == 'twitter-username' ) { 
