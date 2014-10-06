@@ -1025,6 +1025,10 @@ body.cacap .cacap-widget-content .hallotoolbar {
 			max-width: unset; 
 			min-width: unset; 
 			width: unset; 
+			.cacap-widget-content { 
+				margin-left: 53%; 
+				padding-left: 0;
+			} 
 		} 
 		#cacap-header { 
 			.cacap-avatar { 
