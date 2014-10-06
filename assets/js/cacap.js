@@ -301,7 +301,7 @@ window.wp = window.wp || {};
 				} else { 
 					message = 'Please enter a valid twitter username, without spaces or the "@" prefix.'; 
 					warn_invalid_data(obj, message);
-					return false
+					return false; 
 				} 
 			} else { 
 				//assume content doesn't need validation, is valid
@@ -817,7 +817,7 @@ window.wp = window.wp || {};
 				update_visibility_fields(); 
 			}
 		});
-	}
+	}; 
 
 	wp.cacap = new CACAP();
 }(jQuery));
