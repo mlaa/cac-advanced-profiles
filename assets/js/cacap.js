@@ -611,14 +611,17 @@ window.wp = window.wp || {};
 		}
 
 		function bind_enterkey() { 
-			/*
-			 *$(document).keypress(function(e) { 
-			 *        if(e.which == 13) { 
-			 *                e.preventDefault(); 
-			 *                process_clickaway(); 
-			 *        } 
-			 *}); 
-			 */
+			$(document).keypress(function(e) { 
+				if(e.which == 13) { // enter has been pressed
+					var this_thing = e.currentTarget.activeElement; 
+					if ( this_thing.classList.contains('url') || this_thing.classList.contains('twitter_username') ) { 
+
+						e.preventDefault(); 
+						e.currentTarget.activeElement.blur(); 
+						process_clickaway(); 
+					} 
+				} 
+			}); 
 		} 
 
 		/**
