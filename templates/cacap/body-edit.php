@@ -74,8 +74,8 @@
 
 											<?php printf( '<li class="%s">', esc_attr( $level['id'] ) ); ?>
 
-											<label for="<?php echo esc_attr( 'see-field_' . $xprofile_field_id . '_' . $level['id'] ); ?>">
 												<input type="radio" id="<?php echo esc_attr( 'see-field_' . $xprofile_field_id . '_' . $level['id'] ); ?>" name="<?php echo esc_attr( $widget_instance->css_id . '[visibility]' ); ?>" value="<?php echo esc_attr( $level['id'] ); ?>" <?php checked( $level['id'], $visibility_level ); ?> />
+											<label for="<?php echo esc_attr( 'see-field_' . $xprofile_field_id . '_' . $level['id'] ); ?>">
 												<span class="field-visibility-text"><?php echo esc_html( $level['label'] ); ?></span>
 											</label>
 
@@ -159,8 +159,8 @@
 
 											<?php printf( '<li class="%s">', esc_attr( $level['id'] ) ); ?>
 
-											<label for="<?php echo esc_attr( 'see-field_' . $xprofile_field_id . '_' . $level['id'] ); ?>">
 												<input type="radio" id="<?php echo esc_attr( 'see-field_' . $xprofile_field_id . '_' . $level['id'] ); ?>" name="<?php echo esc_attr( $widget_instance->css_id . '[visibility]' ); ?>" value="<?php echo esc_attr( $level['id'] ); ?>" <?php checked( $level['id'], $visibility_level ); ?> />
+											<label for="<?php echo esc_attr( 'see-field_' . $xprofile_field_id . '_' . $level['id'] ); ?>">
 												<span class="field-visibility-text"><?php echo esc_html( $level['label'] ); ?></span>
 											</label>
 

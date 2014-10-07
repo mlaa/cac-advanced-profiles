@@ -399,10 +399,6 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 			border-radius: 2px 2px 2px 2px;
 		}
 
-		input[type="text"] {
-			height: 32px;
-		}
-
 		label, span.label {
 			display: block;
 			color: $header_secondary_text_color;
@@ -1018,7 +1014,20 @@ body.cacap .cacap-widget-content .hallotoolbar {
 	} 
 } 
 
+/* Accessibility: Large Type */
+.fontsize { 
+	#cacap-user-widget-new { 
+		#cacap-new-widget-types { 
+			height: 100%; 
+			li { 
+				width: 6em; 
+				height: 6em; 
+			} 
+		} 
+	}
+} 
 
+/* Mobile */ 
 @media only screen and (max-width: 760px) { 
 	body.cacap { 
 		.cacap-row { 

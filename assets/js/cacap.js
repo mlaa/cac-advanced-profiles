@@ -497,9 +497,12 @@ window.wp = window.wp || {};
 			new_widget_prototype = $( '#cacap-widget-prototype-' + wtype ).html();
 			new_widget_prototype = new_widget_prototype.replace( /newwidgetkey/g, 'newwidget' + new_widget_count );
 
+
 			wid = 'cacap-widget-newwidget' + new_widget_count;
 
+			var nwp = '<li id="' + wid + '" class="cacap-widget-' + wtype + '">' + new_widget_prototype + '</li>'; 
 			$widget_list.append( '<li id="' + wid + '" class="cacap-widget-' + wtype + '">' + new_widget_prototype + '</li>' );
+
 
 			// Update the widget order input value
 			init_widget_order();
@@ -570,6 +573,43 @@ window.wp = window.wp || {};
 				} else {
 					jcw_id = '';
 				}
+
+				// handle clicking "Change" on visibility toggle links
+				// for new widgets. '0' below is the ID for new widgets. 
+				if ( ( $jcw_target.hasClass('visibility-toggle-link') ) && ('field-visibility-settings-toggle-0' == $jcw_target.parent().attr('id') ) ) { 
+
+					// we have to rebind these, because otherwise the default behavior 
+					// (following the link to "#") will happen. 
+					$jcw_target.on('click', function(e) { 
+						// normal behavior for this button stolen from bp-default/_inc/global.js
+						var toggle_div = $jcw_target.parent();
+
+						$(toggle_div).fadeOut( 600, function(){
+							$(toggle_div).siblings('.field-visibility-settings').slideDown(400);
+						});
+
+						return false;
+					}); 
+				} 	      
+
+				// handle clicking "Close" on visibility toggle links
+				// for new widgets. 
+				if ( ( $jcw_target.hasClass('field-visibility-settings-close') ) ) { 
+					$jcw_target.on('click', function(e) { 
+						var settings_div = $jcw_target.parent();
+
+						$(settings_div).slideUp( 400, function(){
+							$(settings_div).siblings('.field-visibility-settings-toggle').fadeIn(800);
+						});
+						return false;
+					}); 
+				} 
+
+				// now handle visibility radio buttons for new widgets. 
+				// redundant, I know. 
+				$('.field-visibility-settings input[type=radio]').click(function(){ 
+					$(this).parents('.field-visibility-settings').siblings('.field-visibility-settings-toggle').children('.current-visibility-level').html($(this).parent().find('span').text()); 
+				}); 
 
 				if ( currently_editing.length && jcw_id !== currently_editing && ! $jcw_target.closest( '.ui-autocomplete' ).length && ! $jcw_target.closest( '.hallolink-dialog' ).length ) {
 					process_clickaway(e); 
