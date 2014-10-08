@@ -653,6 +653,9 @@ body.profile-edit {
 
 			article.editable-content {
 				padding: 0;
+				&:focus { 
+					outline: 1px dotted #ddd; 
+				} 
 				/*
 				 * hack to emulate single-line inputs, 
 				 * stolen from http://stackoverflow.com/a/13470210/584121  
