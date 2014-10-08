@@ -267,10 +267,12 @@ class CACAP_Controller {
 				// In some cases, such as College, fields may
 				// be empty because it's not intended to be
 				// saved from this interface
-				if ( ! $widget_type ) {
+				if ( ! $widget_type || ! $content ) {
 					continue;
 				}
 
+				_log( 'heyo! content is: ' ); 
+				_log( $content ); 
 				$key_a = explode( '-', $key );
 				$key_a_last = array_pop( $key_a );
 				if ( 0 === strpos( $key_a_last, 'newwidget' ) ) {
