@@ -1031,9 +1031,9 @@ body.cacap .cacap-widget-content .hallotoolbar {
 @media only screen and (max-width: 760px) { 
 	body.cacap { 
 		.cacap-row { 
-			max-width: unset; 
-			min-width: unset; 
-			width: unset; 
+			max-width: none; 
+			min-width: 100%; 
+			width: 100%; 
 			.cacap-widget-content { 
 				margin-left: 53%; 
 				padding-left: 0;
