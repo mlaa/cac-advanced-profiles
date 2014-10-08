@@ -371,7 +371,7 @@ window.wp = window.wp || {};
 			var $wrapped_html = $('<div>' + raw_html + '</div>'); // jquery needs these wrapped up
 			$wrapped_html.find('style, meta, head').remove(); //remove tags
 			$wrapped_html.find('p').append('<br/>').contents().unwrap(); //replace <p> tags with <br> tags 
-			var result = $wrapped_html.html().trim().replace(/"/g, "&quot;").replace(/\n/g, " "); 
+			var result = $wrapped_html.html().trim().replace(/\n/g, " "); 
 			return result; 
 		} 
 
