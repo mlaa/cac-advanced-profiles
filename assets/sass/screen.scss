@@ -150,6 +150,7 @@ body.cacap .cacap-edit-buttons.cacap-edit-buttons-bottom {
 	bottom: auto;
 	margin: 0 auto 3em;
 	color: #777;
+	max-width: 940px; 
 }
 
 .cacap-edit-buttons input,
@@ -509,6 +510,7 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 
 .cacap-widget-content {
 	padding-left: $col_width_onethird;
+	padding-top: 5px; /* line up with title */  
 	min-height: 1.5em;
 }
 
