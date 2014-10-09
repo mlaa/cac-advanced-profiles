@@ -370,8 +370,9 @@ window.wp = window.wp || {};
 		function remove_unwanted_html_tags(raw_html) { 
 			var $wrapped_html = $('<div>' + raw_html + '</div>'); // jquery needs these wrapped up
 			$wrapped_html.find('style, meta, head').remove(); //remove tags
-			$wrapped_html.find('p').append('<br/>').contents().unwrap(); //replace <p> tags with <br> tags 
-			var result = $wrapped_html.html().trim().replace(/\n/g, " "); 
+			$wrapped_html.find('p, div').prepend('<br/>').contents().unwrap(); //replace <p> tags with <br> tags 
+
+			var result = $wrapped_html.html().trim().replace(/(<br>){3,}/gi, '<br><br>').replace(/\n/g, " "); 
 			return result; 
 		} 
 
