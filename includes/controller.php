@@ -38,9 +38,6 @@ class CACAP_Controller {
 		// Add the commons-profile body class if necessary
 		add_filter( 'bp_get_the_body_class', array( $this, 'modify_body_class' ) );
 
-		// Remove the WP admin bar for the moment, 
-		// since it was causing trouble. 
-		add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) );
 	}
 
 	public function catch_profile_edit() {
