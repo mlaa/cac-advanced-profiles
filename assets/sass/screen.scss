@@ -1067,3 +1067,57 @@ body.cacap .cacap-widget-content .hallotoolbar {
 		} 
 	} 
 } 
+
+/* Phones */ 
+@media only screen and (max-width: 380px) { 
+	body.cacap { 
+		.cacap-row { 
+			.cacap-widget-title { 
+				padding-right: 0; 
+				margin-bottom: 20px; 
+				float: none; 
+				width: 100%; 
+				text-align: center; 
+			} 
+			.cacap-widget-content { 
+				margin-left: 0; 
+				padding: 0 5%; 
+				.hallotoolbar { 
+					top: -42px; 
+					button { 
+						padding: 4px; 
+						font-size: 10px; 
+					} 
+				} 
+			} 
+		} 
+		#cacap-edit { 
+			label { 
+				display: inline-block; 
+				float: none; 
+				margin: 0; 
+			} 
+			.cacap-widget-title { 
+				width: 100%; 
+				margin-left: 0; 
+			} 
+			.cacap-click-to-edit.cacap-widget-content { 
+				margin: 0 2%; 
+			} 
+		} 
+		#cacap-widget-list { 
+			.field-visibility-settings-toggle { 
+				margin-left: 2%; 
+			} 
+			.field-visibility-settings { 
+				margin-left: 2%; 
+			} 
+		} 
+	} 
+} 
+
+@media only print { 
+	.a11y-toolbar, .cacap-edit-buttons, .activity, #powered-by { 
+		display: none; 
+	} 
+} 
