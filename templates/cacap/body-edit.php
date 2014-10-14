@@ -189,7 +189,7 @@
 
 	<input type="hidden" name="cacap-widget-order" id="cacap-widget-order" value="<?php echo cacap_widget_order() ?>" />
 
-	<?php if ( bp_is_my_profile() ) : ?>
+	<?php if ( bp_is_my_profile() || is_super_admin( bp_loggedin_user_id() ) ) : ?>
 		<div class="cacap-edit-buttons cacap-edit-buttons-bottom">
 		<?php if ( bp_is_user_profile_edit() ) : ?>
 			<input type="submit" value="<?php _e( 'Save Changes', 'cacap' ) ?>" class="cacap-edit-submit" />
