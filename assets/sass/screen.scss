@@ -110,18 +110,17 @@ body.cacap .button {
  */
 body.cacap, body.bp-user {
 	font-family: $font;
-	font-size: 14px;
+	font-size: 87.5%;
 	background: #fff;
 	width: 100%;
 	margin: 0 auto;
 
 	h1 {
-		font-size: 50px;
+		font-size: 3.125em;
 		margin-bottom: 0.2em; 
 	}
-
 	h4 {
-		font-size: 23px;
+		font-size: 1.438em;
 	}
 }
 
@@ -1030,6 +1029,17 @@ body.cacap .cacap-widget-content .hallotoolbar {
 			} 
 		} 
 	}
+	h1 {  
+		font-size: 300% !important; 
+		margin-top: 0; 
+	} 
+	.cacap-edit-buttons { 
+		top: 100px !important; /* nudge it down a bit to fit */ 
+		a { 
+			font-size: 125%; /* make buttons consistent sizes */ 
+		} 
+	} 
+
 } 
 
 /* Mobile */ 
