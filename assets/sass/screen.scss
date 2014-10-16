@@ -134,6 +134,7 @@ body.cacap #cacap-header .cacap-hero-row .cacap-edit-buttons {
 	top: 50px;
 	text-align: right;
 	width: 100%;
+	background-color: transparent !important; 
 }
 
 // Repeated because I hate CSS
@@ -142,7 +143,7 @@ body.cacap .cacap-edit-buttons {
 	top: 50px;
 	text-align: right;
 	width: 100%;
-
+	background-color: transparent !important; 
 }
 
 body.cacap .cacap-edit-buttons.cacap-edit-buttons-bottom {
