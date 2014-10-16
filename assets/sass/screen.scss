@@ -1080,7 +1080,7 @@ body.cacap .cacap-widget-content .hallotoolbar {
 } 
 
 /* Phones */ 
-@media only screen and (max-width: 380px) { 
+@media only screen and (max-width: 500px) { 
 	body.cacap { 
 		.cacap-row { 
 			.cacap-widget-title { 
@@ -1089,6 +1089,8 @@ body.cacap .cacap-widget-content .hallotoolbar {
 				float: none; 
 				width: 100%; 
 				text-align: center; 
+				margin-left: 2% !important; 
+				margin-right: 2% !important; 
 			} 
 			.cacap-widget-content { 
 				margin-left: 0; 
@@ -1118,10 +1120,12 @@ body.cacap .cacap-widget-content .hallotoolbar {
 		} 
 		#cacap-widget-list { 
 			.field-visibility-settings-toggle { 
-				margin-left: 2%; 
+				margin-left: 6%; 
+				margin-top: 2%; 
 			} 
 			.field-visibility-settings { 
-				margin-left: 2%; 
+				margin-left: 6%; 
+				margin-top: 2%; 
 			} 
 		} 
 	} 
