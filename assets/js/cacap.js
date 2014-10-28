@@ -94,7 +94,9 @@ window.wp = window.wp || {};
 				var modal_inst = $.remodal.lookup[$('[data-remodal-id=modal]').data('remodal')];
 
 				// open a modal
-				modal_inst.open(); 
+				if ( modal_inst ) { 
+					modal_inst.open(); 
+				} 
 			} 
 		} 
 		/**
