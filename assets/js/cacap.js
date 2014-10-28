@@ -83,6 +83,20 @@ window.wp = window.wp || {};
  */
 		}
 
+		/** 
+		 * Make a pop-up bubble first first-timers
+		 * to alert them of the changes. 
+		 */ 
+		function init_bubble() { 
+			if ($.cookie('MLAPortfolios') !== null ){ 
+				// me want cookie, but no have cookie. 
+				$.cookie('MLAPortfolios', 1); // so me CREATE cookie. 
+				var modal_inst = $.remodal.lookup[$('[data-remodal-id=modal]').data('remodal')];
+
+				// open a modal
+				modal_inst.open(); 
+			} 
+		} 
 		/**
 		 * Initialize the sortable widgets.
 		 */
@@ -817,6 +831,7 @@ window.wp = window.wp || {};
 		$( document ).ready( function() {
 			init_bodyclass();
 			init_stickyheader();
+			init_bubble(); 
 
 			$widget_list = $( '#cacap-widget-list' );
 
