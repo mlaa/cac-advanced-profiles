@@ -156,6 +156,7 @@ class CACAP_Controller {
 			wp_enqueue_style( 'cacap-css', CACAP_PLUGIN_URL . '/assets/css/screen.css', array( 'cac-bp-css' ), $v );
 			//wp_enqueue_style( 'cacap-jquery-ui', CACAP_PLUGIN_URL . '/lib/smoothness/jquery-ui-1.10.3.custom.css', array( 'cac-bp-css' ), $v );
 			wp_enqueue_style( 'cacap-font-awesome', CACAP_PLUGIN_URL . '/lib/font-awesome/css/font-awesome.css', array( 'cac-bp-css' ), $v );
+			wp_enqueue_style( 'cacap-remodal', CACAP_PLUGIN_URL . '/lib/jquery.remodal/jquery.remodal.css', array( 'cac-bp-css' ), $v );
 		}
 	}
 
@@ -169,11 +170,13 @@ class CACAP_Controller {
 		wp_register_script( 'cacap-hallo', CACAP_PLUGIN_URL . '/lib/hallo/hallo.js', array( 'jquery', 'jquery-ui-widget', 'jquery-ui-dialog', 'cacap-rangy' ), $v );
 		wp_register_script( 'cacap-scrollto', CACAP_PLUGIN_URL . '/lib/jquery.scrollTo/jquery.scrollTo.min.js', array( 'jquery' ), $v );
 		wp_register_script( 'cacap-htmlclean', CACAP_PLUGIN_URL . '/lib/jquery.clean/jquery.htmlClean.min.js', array( 'jquery' ), $v );
+		wp_register_script( 'cacap-remodal', CACAP_PLUGIN_URL . '/lib/jquery.remodal/jquery.remodal.min.js', array( 'jquery' ), $v );
 
 		$deps = array(
 			'jquery',
 			'cacap-waypoints',
 			'cacap-waypoints-sticky',
+			'cacap-remodal',
 		);
 
 		if ( bp_is_user_profile_edit() ) {
