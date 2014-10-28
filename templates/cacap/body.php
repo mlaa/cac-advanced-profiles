@@ -5,7 +5,12 @@
 <?php else : ?>
 	<div id="cacap-user-widgets">
 		<?php foreach ( cacap_user_widget_instances() as $widget_instance ) : ?>
-			<?php if ( cacap_user_can_view_widget( $widget_instance->visibility ) ): ?> 
+
+			<?php // look for visibility in the ['value'] if you don't see it in the instance. 
+			if ( ! $widget_instance->visibility && $widget_instance->value['visibility'] ) { 
+					$widget_instance->visibility = $widget_instance->value['visibility']; 
+			}  
+			if ( cacap_user_can_view_widget( $widget_instance->visibility ) ): ?> 
 				<div class="cacap-row cacap-widget cacap-widget-<?php echo esc_attr( $widget_instance->widget_type->slug ) ?>">
 					<div class="cacap-widget-title"><?php echo $widget_instance->display_title() ?></div>
 					<div class="cacap-widget-content"><?php echo $widget_instance->display_content() ?></div>
