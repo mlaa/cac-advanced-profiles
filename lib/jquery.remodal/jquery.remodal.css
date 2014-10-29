@@ -6,7 +6,7 @@
  *  Made by Ilya Makarov
  *  Under MIT License
  */
-@import url(http://fonts.googleapis.com/css?family=Exo+2:700,400&subset=latin,cyrillic);
+/*@import url(http://fonts.googleapis.com/css?family=Exo+2:700,400&subset=latin,cyrillic);*/
 
 /* ==========================================================================
    Remodal necessary styles
@@ -70,7 +70,7 @@ html.remodal_lock, body.remodal_lock {
 /* Default theme font */
 
 .remodal, .remodal * {
-    font-family: 'Exo 2', sans-serif;
+    /*font-family: 'Exo 2', sans-serif;*/
 }
 
 /* Background for effects */
@@ -172,7 +172,7 @@ body.remodal_active .remodal {
     font-size: 28px;
     font-family: Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif !important;
     content: "×";
-    line-height: 28px;
+    line-height: 24px;
     cursor: pointer;
     text-decoration: none;
     color: #3e5368;
@@ -192,35 +192,39 @@ body.remodal_active .remodal {
 
 /* Dialog buttons */
 
-.remodal-confirm, .remodal-cancel {
-    display: inline-block;
-    width: 120px;
-    padding: 9px 0;
-    margin: 0 0 5px 0;
+/*
+ *.remodal-confirm, .remodal-cancel {
+ *    display: inline-block;
+ *    width: 120px;
+ *    padding: 9px 0;
+ *    margin: 0 0 5px 0;
+ *
+ *    font-size: 10pt;
+ *    cursor: pointer;
+ *    text-decoration: none;
+ *    text-align: center;
+ *    -webkit-border-radius: 50px;
+ *    border-radius: 50px;
+ *    background-clip: padding-box;
+ *    -webkit-transition: all 0.2s linear;
+ *    -moz-transition: all 0.2s linear;
+ *    -o-transition: all 0.2s linear;
+ *    transition: all 0.2s linear;
+ *}
+ */
 
-    font-size: 10pt;
-    cursor: pointer;
-    text-decoration: none;
-    text-align: center;
-    -webkit-border-radius: 50px;
-    border-radius: 50px;
-    background-clip: padding-box;
-    -webkit-transition: all 0.2s linear;
-    -moz-transition: all 0.2s linear;
-    -o-transition: all 0.2s linear;
-    transition: all 0.2s linear;
-}
-
-.remodal-confirm {
-    border: 2px solid #16a085;
-    background: #f4f4f4;
-    color: #16a085;
-}
-
-.remodal-confirm:hover, .remodal-confirm:active {
-    background: #16a085;
-    color: #f4f4f4;
-}
+/*
+ *.remodal-confirm {
+ *    border: 2px solid #16a085;
+ *    background: #f4f4f4;
+ *    color: #16a085;
+ *}
+ *
+ *.remodal-confirm:hover, .remodal-confirm:active {
+ *    background: #16a085;
+ *    color: #f4f4f4;
+ *}
+ */
 
 .remodal-cancel {
     border: 2px solid #c0392b;
