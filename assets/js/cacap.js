@@ -88,7 +88,7 @@ window.wp = window.wp || {};
 		 * to alert them of the changes. 
 		 */ 
 		function init_bubble() { 
-			if ($.cookie('MLAPortfolios') !== null ){ 
+			if ($.cookie('MLAPortfolios') == null ){ 
 				// me want cookie, but no have cookie. 
 				$.cookie('MLAPortfolios', 1); // so me CREATE cookie. 
 				var modal_inst = $.remodal.lookup[$('[data-remodal-id=modal]').data('remodal')];
