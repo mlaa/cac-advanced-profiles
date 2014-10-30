@@ -26,7 +26,7 @@
 
 			<div class="remodal" data-remodal-id="modal">
 				<h1>Welcome to Portfolios</h1>
-					<p>Welcome to our new extended profiles system, called "portfolios." Here you can enter information about yourself and your career, so that you might better connect with other users of the <em>Commons</em>. Read more about this new system on <a href="http://howtouse.commons.mla.org/  ">the help blog</a>.</p> 
+				<p>The Portfolios profile system allows you to enter information about yourself and your career, so that you might better connect with other users of the Commons. Read more about Portfolios on <a href="http://howtouse.commons.mla.org/category/how-to-do-things-with-mla-commons/portfolios">the help blog</a>.</p>
 				<br>
 				<!-- <a class="remodal-cancel" href="#">Cancel</a> --> 
 				<a class="remodal-confirm" href="#">Get Started</a>
