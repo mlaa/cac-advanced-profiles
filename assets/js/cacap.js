@@ -791,7 +791,6 @@ window.wp = window.wp || {};
 					// Swap out names - this is the part that's required
 					// to make the form work
 					$( this ).find( 'input,select' ).each( function() {
-						console.log( $( this ).attr( 'name' ).replace( /(\[content\]\[)([0-9]+)\]/, '$1' + c + ']' ) );
 						$( this ).attr( 'name', $( this ).attr( 'name' ).replace( /(\[content\]\[)([0-9]+)\]/, '$1' + c + ']' ) );
 					} );
 
