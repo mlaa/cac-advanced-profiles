@@ -164,7 +164,8 @@ window.wp = window.wp || {};
 			} );
 
 			// Delete a position
-			$widget_list.on( 'click', '.cacap-delete-position', function() {
+			$widget_list.on( 'click', '.cacap-delete-position', function(e) {
+				e.preventDefault(); 
 				$( this ).parent( 'li' ).remove();
 			} );
 
