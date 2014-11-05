@@ -7,6 +7,42 @@
 
 @import "compass/reset";
 
+$lightgray: #fafafa; 
+$gray: darken($lightgray, 6%);   
+$darkergray: darken($lightgray, 10%); 
+$darkgray: darken($lightgray, 50%); 
+$verydarkgray: darken($lightgray, 80%); 
+
+@mixin minimalButton { 
+	display: inline-block; 
+	background-color: $lightgray; 
+	border: 1px solid $gray; 
+	border-bottom: 2px solid #ddd;
+	color: $verydarkgray; 
+	font-size: 11px; 
+	text-decoration: none; 
+	text-shadow: 0 1px rgba(255, 255, 255, .75);
+	a, a:hover, &:hover, &:active { 
+		color: $verydarkgray; 
+		text-decoration: none; 
+	} 
+	font-weight: bold; 
+	&:hover { 
+		background-color: $gray; 
+	} 
+	&:active { 
+		background-color: $darkergray; 
+		text-shadow: none; 
+	} 
+	@include borderRadius; 
+} 
+
+@mixin borderRadius($radius: 3px) { 
+	border-radius: $radius;
+	-moz-border-radius: $radius;
+	-webkit-border-radius: $radius;  
+} 
+
 $header_primary_text_color: #333;
 $header_secondary_text_color: #444;
 $link_color: #07D;
@@ -114,6 +150,7 @@ body.cacap, body.bp-user {
 	background: #fff;
 	width: 100%;
 	margin: 0 auto;
+	background-image: none !important; 
 
 	h1 {
 		font-size: 3.125em;
@@ -1041,6 +1078,110 @@ body.cacap .cacap-widget-content .hallotoolbar {
 	} 
 
 } 
+
+
+/* --- CACAP Portfolio / Profile --- {{{2 */ 
+
+/* CACAP CSS is still getting loaded here, 
+ * so we have to override some things 
+ */ 
+.activity.bp-user .main-menu { 
+	font-size: 100%; 
+} 
+.cacap-bp-profile-fields { 
+	width: 900px; 
+} 
+
+#cacap-user-widget-new {
+	background-color: #efefef;
+	border-bottom: 2px solid #eee;
+	border-top: 2px solid #eee; 
+	width: 100%;
+	padding: 10px 0;
+
+	#cacap-user-widget-new-content {
+		text-align: center; 
+	}
+
+	#cacap-new-widget-types {
+		line-height: 1em; 
+
+		a {
+			text-decoration: none;
+		}
+
+		li {
+			@include minimalButton; 
+			@include borderRadius(5px); 
+			width: 100px;
+			display: inline-block;
+			vertical-align: top; 
+			text-align: center;
+			height: 90px;
+			margin-right: 10px;
+			padding: 3px;
+			padding-top: 22px;
+			line-height: 1.1em; 
+			cursor: pointer;
+			margin-bottom: 10px; 
+
+			&.cacap-has-max {
+				opacity: .4;
+
+				.cacap-has-max-tooltip {
+					position: absolute;
+					font-size: .9em;
+					height: 1.4em;
+					background: #fff;
+					border: 1px solid #666;
+					opacity: 2;
+					color: #000;
+					display: none;
+				}
+
+				&:hover {
+					cursor: default;
+					background-color: #FAFAFA; 
+
+					.cacap-has-max-tooltip {
+						display: block;
+					}
+
+					a {
+						cursor: default;
+						color: #333; 
+					}
+				}
+			}
+
+			.cacap-widget-type-name {
+				display: block;
+				color: #333; 
+				line-height: 1.2em; 
+			}
+			.cacap-plus { 
+				font-size: 60px; 
+				color: #333; 
+			} 
+		}
+	}
+}
+
+/* --- Welcome "Bubble" Modal Dialog for CACAP {{{3 --- */ 
+
+.remodal-confirm { 
+	@include minimalButton; 
+	padding: 12px; 
+	font-size: 14px; 
+} 
+
+.remodal-close { 
+	display: none; /* disable X button to clean it up a bit */ 
+} 
+
+/* --- Welcome "Bubble" Modal Dialog for CACAP }}} --- */ 
+
+/* --- End CACAP Portfolio / Profile --- }}} */ 
 
 /* Mobile */ 
 @media only screen and (max-width: 760px) { 
