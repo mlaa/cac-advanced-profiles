@@ -298,6 +298,9 @@ class CACAP_Controller {
 				$order_iterator = $order_iterator + 1; 
 			}
 		}
+		// Add an activity item for this update. 
+		$this->cacap_update_profile_activity( bp_loggedin_user_id() ); 
+
 		// Redirect to user profile after save. 
 		// Stolen from http://buddypress.org/support/topic/how-to-redirect-users-to-their-profile-after-they-edit-their-profile/ 
 		global $bp; 
@@ -305,6 +308,62 @@ class CACAP_Controller {
 		exit; 
 	}
 
+	/**
+	 * Adapted from bp_xprofile_updated_profile_activity()
+	 * in bp-xprofile-activity.php
+	 *
+	 * Add an activity item when a user has updated his profile.
+	 *
+	 * @since BuddyPress (2.0.0)
+	 *
+	 * @param int $user_id ID of the user who has updated his profile.
+	 * @return bool True on success, false on failure.
+	 */
+	public function cacap_update_profile_activity( $user_id ) {
+
+		if ( ! bp_is_active( 'activity' ) ) {
+			return false;
+		}
+
+		// @todo: Check to make sure the changes we're broadcasting are public. 
+		
+		// Throttle to one activity of this type per 2 hours
+		$existing = bp_activity_get( array(
+			'max' => 1,
+			'filter' => array(
+				'user_id' => $user_id,
+				'object'  => buddypress()->profile->id,
+				'action'  => 'updated_profile',
+			),
+		) );
+
+		if ( empty( $existing['activities'] ) ) {
+			$throttle = false;
+		} else {
+			// Default throttle time is 2 hours. Filter to change (in seconds)
+			$throttle_period = apply_filters( 'bp_xprofile_updated_profile_activity_throttle_time', 60 * 60 * 2 );
+			$then = strtotime( $existing['activities'][0]->date_recorded );
+			$now  = strtotime( bp_core_current_time() );
+
+			$throttle = ( $now - $then ) < $throttle_period;
+		}
+
+		if ( $throttle ) {
+			return false;
+		}
+
+		// If we've reached this point, assemble and post the activity item
+		$profile_link = trailingslashit( bp_core_get_user_domain( $user_id ) . buddypress()->profile->slug );
+
+		$retval = xprofile_record_activity( array(
+			'user_id'      => $user_id,
+			'primary_link' => $profile_link,
+			'component'    => buddypress()->profile->id,
+			'type'         => 'updated_profile',
+		) );
+
+		return (bool) $retval;
+	}
 	public function filter_add_friend_button( $button ) {
 		if ( bp_is_user_profile() ) {
 			$button['wrapper_class'] .= ' button';
