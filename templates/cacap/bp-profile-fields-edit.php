@@ -96,7 +96,7 @@ $profile_args = array(
 			<?php if ( 'textbox' == bp_get_the_profile_field_type() ) : ?>
 
 				<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', 'buddypress' ); ?><?php endif; ?></label>
-				<input type="text" name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>" value="<?php bp_the_profile_field_edit_value(); ?>" <?php if ( bp_get_the_profile_field_is_required() ) : ?>aria-required="true"<?php endif; ?> placeholder="<?php echo esc_attr( bp_the_profile_field_description() ); ?>" />
+				<input type="text" name="<?php bp_the_profile_field_input_name(); ?>" id="<?php bp_the_profile_field_input_name(); ?>" value="<?php bp_the_profile_field_edit_value(); ?>" <?php if ( bp_get_the_profile_field_is_required() ) : ?>aria-required="true"<?php endif; ?> placeholder="<?php echo esc_attr( bp_the_profile_field_description() ); ?>" readonly="readonly"/>
 
 			<?php endif; ?>
 
@@ -208,6 +208,8 @@ $profile_args = array(
 			<?php endif ?>
 
 			<?php do_action( 'bp_custom_profile_edit_fields' ); ?>
+
+			<p>Visit <a href="https://www.mla.org/join_update">mla.org</a> to change your name, title, or institutional affiliation.</p> 
 		</div>
 
 	<?php endwhile; ?>

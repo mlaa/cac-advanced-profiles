@@ -396,6 +396,12 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 			margin-bottom: 12px;
 			width: 100%;
 			border-radius: 2px 2px 2px 2px;
+			&[readonly="readonly"] { 
+				background-color: #efefef; 
+				color: #777; 
+				border: none; 
+				box-shadow: none; 
+			} 
 		}
 
 		label, span.label {
