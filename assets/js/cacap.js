@@ -852,6 +852,11 @@ window.wp = window.wp || {};
 				bind_enterkey(); 
 				update_visibility_fields(); 
 			}
+
+			// Don't show blinking cursor on readonly input fields. 
+			$('input[readonly]').focus(function(){
+				this.blur();
+			}); 
 		});
 	}; 
 
