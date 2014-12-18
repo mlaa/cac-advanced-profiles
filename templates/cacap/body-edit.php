@@ -35,6 +35,10 @@
 			<?php endforeach ?>
 			</ul>
 
+			<div class="link-to-mla-org">
+				<p>Or visit <a href="https://www.mla.org/join_update">mla.org/join_update</a> to update your name, title, or affiliation.</p> 
+			</div> 
+
 			<div id="cacap-widget-prototypes">
 			<?php foreach ( cacap_widget_types() as $widget_type ) : ?>
 				<?php $wi_prototype = new CACAP_Widget_Instance( array( 'widget_type' => $widget_type, 'key' => 'newwidgetkey' ) ) ?>
