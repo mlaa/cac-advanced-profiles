@@ -66,6 +66,13 @@
 					<?php echo wpautop( bp_create_excerpt( html_entity_decode( xprofile_get_field_data( $ay_field, bp_displayed_user_id() ) ), 355 ) ) ?>
 				</div>
 			<?php endif ?>
+
+
+			<?php if ( bp_is_user_profile_edit() ) : ?>
+
+			<a id="mlaorg-link" href="http://www.mla.org/join_update">Visit mla.org to update your name, title, or institional afiliation.</a>
+	
+			<?php endif ?>
 		</div>
 
 	</div>

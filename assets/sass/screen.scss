@@ -241,6 +241,11 @@ body.cacap #cacap-header .cacap-hero-row.stuck {
 			float: left;
 		}
 
+		#mlaorg-link { 
+			/* fix spacing around the link to mla.org */ 
+			line-height: 2em; 
+		} 
+
 		&.stuck {
 			position: fixed;
 			background: transparent url('../images/black_linen_v2.png');
