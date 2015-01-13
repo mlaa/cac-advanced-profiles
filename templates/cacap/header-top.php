@@ -70,8 +70,6 @@
 
 			<?php if ( bp_is_user_profile_edit() ) : ?>
 
-			<a id="mlaorg-link" href="http://www.mla.org/join_update">Visit mla.org to update your name, title, or institional afiliation.</a>
-	
 			<?php endif ?>
 		</div>
 
