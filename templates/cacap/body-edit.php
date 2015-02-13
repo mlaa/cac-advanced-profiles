@@ -35,9 +35,11 @@
 			<?php endforeach ?>
 			</ul>
 
+			<?php if ( class_exists( 'MLAAPI' ) ): ?> 
 			<div class="link-to-mla-org">
-				<p>Or visit <a href="https://www.mla.org/join_update">mla.org/join_update</a> to update your name, title, or affiliation.</p> 
+				<p>or visit <a href="https://www.mla.org/join_update">mla.org/join_update</a> to update your name, title, or affiliation.</p> 
 			</div> 
+			<?php endif; ?> 
 
 			<div id="cacap-widget-prototypes">
 			<?php foreach ( cacap_widget_types() as $widget_type ) : ?>
