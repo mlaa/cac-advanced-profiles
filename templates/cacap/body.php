@@ -3,6 +3,9 @@
 <?php if ( ! bp_is_user_profile() || bp_is_user_change_avatar() || ( ! empty( $_GET['commons-profile'] ) && 1 === (int) $_GET['commons-profile'] ) ) : ?>
 	<?php bp_locate_template( 'cacap/commons-profile.php', true ) ?>
 <?php else : ?>
+
+	<?php do_action( 'cacap_body' ); ?>
+
 	<div id="cacap-user-widgets">
 		<?php foreach ( cacap_user_widget_instances() as $widget_instance ) : ?>
 
