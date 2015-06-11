@@ -84,7 +84,7 @@ class CACAP_Controller {
 				'widget_type' => $widget_type,
 				'title' => $title,
 				'content' => $content,
-				'visibility' => $visibility, 
+				'visibility' => $visibility,
 			) );
 		}
 	}
@@ -220,18 +220,18 @@ class CACAP_Controller {
 			$user->save_widget_order( $_POST['cacap-widget-order'] );
 		}
 
-		foreach( $_POST as $postkey => $postvalue ) { 
-			if ( strpos( $postkey, 'visibility' ) ) { 
+		foreach( $_POST as $postkey => $postvalue ) {
+			if ( strpos( $postkey, 'visibility' ) ) {
 				// key is something like field_10_visibility
 				// save this data in xprofile visibility settings
-				
-				$begin = strpos( $postkey, '_' ); 
-				$end = strrpos( $postkey, '_' ); 
 
-				$field_id = substr( $postkey, $begin+1, $end-$begin-1 ); 
-				
+				$begin = strpos( $postkey, '_' );
+				$end = strrpos( $postkey, '_' );
+
+				$field_id = substr( $postkey, $begin+1, $end-$begin-1 );
+
 				// Set visibility of new field
-				$vis_out = xprofile_set_field_visibility_level( $field_id, bp_displayed_user_id(), $postvalue ); 
+				$vis_out = xprofile_set_field_visibility_level( $field_id, bp_displayed_user_id(), $postvalue );
 			}
 		}
 
@@ -261,7 +261,7 @@ class CACAP_Controller {
 			}
 
 			// Now edit and add
-			$order_iterator = 0; 
+			$order_iterator = 0;
 			foreach ( $widget_order as $key ) {
 				$title       = isset( $_POST[ $key ]['title'] ) ? $_POST[ $key ]['title'] : '';
 				$content     = isset( $_POST[ $key ]['content'] ) ? $_POST[ $key ]['content'] : '';
@@ -282,8 +282,8 @@ class CACAP_Controller {
 						'widget_type' => $widget_type,
 						'title'       => $title,
 						'content'     => $content,
-						'visibility'  => $visibility, 
-						'position'    => $order_iterator, 
+						'visibility'  => $visibility,
+						'position'    => $order_iterator,
 					) );
 				} else {
 					$user->save_widget_instance( array(
@@ -291,21 +291,21 @@ class CACAP_Controller {
 						'widget_type' => $widget_type,
 						'title'       => $title,
 						'content'     => $content,
-						'visibility'  => $visibility, 
-						'position'    => $order_iterator, 
+						'visibility'  => $visibility,
+						'position'    => $order_iterator,
 					) );
 				}
-				$order_iterator = $order_iterator + 1; 
+				$order_iterator = $order_iterator + 1;
 			}
 		}
-		// Add an activity item for this update. 
-		$this->cacap_update_profile_activity( bp_loggedin_user_id() ); 
+		// Add an activity item for this update.
+		$this->cacap_update_profile_activity( bp_loggedin_user_id() );
 
-		// Redirect to user profile after save. 
-		// Stolen from http://buddypress.org/support/topic/how-to-redirect-users-to-their-profile-after-they-edit-their-profile/ 
-		global $bp; 
+		// Redirect to user profile after save.
+		// Stolen from http://buddypress.org/support/topic/how-to-redirect-users-to-their-profile-after-they-edit-their-profile/
+		global $bp;
 		bp_core_redirect( bp_displayed_user_domain() );
-		exit; 
+		exit;
 	}
 
 	/**
@@ -325,8 +325,8 @@ class CACAP_Controller {
 			return false;
 		}
 
-		// @todo: Check to make sure the changes we're broadcasting are public. 
-		
+		// @todo: Check to make sure the changes we're broadcasting are public.
+
 		// Throttle to one activity of this type per 2 hours
 		$existing = bp_activity_get( array(
 			'max' => 1,
