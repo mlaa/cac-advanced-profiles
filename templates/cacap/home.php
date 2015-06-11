@@ -17,9 +17,9 @@
 
 <body <?php body_class() ?>>
 
-<!-- required by Remodal plugin so that we can make modal dialogs 
-     with this content --> 
-<div class="remodal-bg"> 
+<!-- required by Remodal plugin so that we can make modal dialogs
+     with this content -->
+<div class="remodal-bg">
 
 	<?php do_action( 'cacap_before_content' ) ?>
 
