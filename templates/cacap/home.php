@@ -13,8 +13,6 @@
 
 <?php get_template_part( 'templates/head' ); ?>
 
-<?php // locate_template( 'templates/parts/header-head.php', true ); ?>
-
 <body <?php body_class() ?>>
 
 <!-- required by Remodal plugin so that we can make modal dialogs
