@@ -11,13 +11,13 @@
  */
 ?>
 
-<?php locate_template( 'templates/parts/header-head.php', true ); ?> 
+<?php locate_template( 'templates/parts/header-head.php', true ); ?>
 
 <body <?php body_class() ?>>
 
-<!-- required by Remodal plugin so that we can make modal dialogs 
-     with this content --> 
-<div class="remodal-bg"> 
+<!-- required by Remodal plugin so that we can make modal dialogs
+     with this content -->
+<div class="remodal-bg">
 
 	<?php do_action( 'cacap_before_content' ) ?>
 
@@ -28,7 +28,7 @@
 				<h1>Welcome to Portfolios</h1>
 				<p>The Portfolios profile system allows you to enter information about yourself and your career so that you might better connect with other users of the <em>Commons</em>. Read more about Portfolios on the <a href="http://howtouse.commons.mla.org/category/how-to-do-things-with-mla-commons/portfolios">help blog</a>.</p>
 				<br>
-				<!-- <a class="remodal-cancel" href="#">Cancel</a> --> 
+				<!-- <a class="remodal-cancel" href="#">Cancel</a> -->
 				<a class="remodal-confirm" href="#">Get Started</a>
 			</div>
 
@@ -54,6 +54,6 @@
 
 	<?php get_footer( 'cacap' ) ?>
 
-</div> <!-- end .remodal-bg --> 
+</div> <!-- end .remodal-bg -->
 </body>
 </html>
