@@ -69,10 +69,26 @@
 				</div>
 			<?php endif ?>
 
+		<div class="cacap-avatar">
+			<?php bp_displayed_user_avatar( array(
+				'type' => 'full',
+				'width' => '130px',
+				'height' => '130px',
+			) ) ?>
+			<?php if ( ! cacap_is_commons_profile() ) : ?>
+				<div class="activity"><?php bp_last_activity( bp_displayed_user_id() ) ?></div>
+			<?php endif; ?>
 
-			<?php if ( bp_is_user_profile_edit() ) : ?>
+			<?php if ( bp_is_my_profile() ) : ?>
+
+				<div id="change-avatar-button" class="generic-button">
+					<a href="<?php echo bp_displayed_user_domain() ?>profile/change-avatar">Change Avatar</a>
+				</div>
 
 			<?php endif ?>
+
+			<?php do_action( 'cacap_below_avatar' ); ?>
+
 		</div>
 
 	</div>
