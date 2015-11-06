@@ -37,7 +37,7 @@
 
 			<?php if ( class_exists( 'MLAAPI' ) ): ?> 
 			<div class="link-to-mla-org">
-				<p>or visit <a href="https://www.mla.org/join_update">mla.org/join_update</a> to update your name, title, or affiliation.</p> 
+				<p>or visit <a href="https://www.mla.org/mymla">mla.org/mymla</a> to update your name, title, or affiliation.</p>
 			</div> 
 			<?php endif; ?> 
 

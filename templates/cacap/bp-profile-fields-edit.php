@@ -209,7 +209,7 @@ $profile_args = array(
 
 			<?php do_action( 'bp_custom_profile_edit_fields' ); ?>
 
-			<p>Visit <a href="https://www.mla.org/join_update">mla.org</a> to change your name, title, or institutional affiliation.</p> 
+			<p>Visit <a href="https://www.mla.org/mymla">mla.org/mymla</a> to change your name, title, or institutional affiliation.</p>
 		</div>
 
 	<?php endwhile; ?>
