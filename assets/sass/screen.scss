@@ -33,45 +33,48 @@ $row_width: 940px;
 
 $edit_hover_color: #ffff99;
 
-h1, h2, h3, h4, h5, h6 {
-	color: #222222;
-	font-family: $font;
-	font-style: normal;
-	font-weight: bold;
-	line-height: 1.1;
-	margin-bottom: 14px;
-	margin-top: 14px;
-	text-rendering: optimizelegibility;
+#cacap-content {
+	h1, h2, h3, h4, h5, h6 {
+		color: #222222;
+		font-family: $font;
+		font-style: normal;
+		font-weight: bold;
+		line-height: 1.1;
+		margin-bottom: 14px;
+		margin-top: 14px;
+		text-rendering: optimizelegibility;
+	}
+
+	p {
+		line-height: 1.6em;
+		margin-bottom: 11px;
+		font-family: $font;
+	}
+
+	a {
+		color: $link_color;
+	}
+
+	em {
+		font-style: italic;
+	}
+
+	body.no-js .hide-if-no-js {
+		display: none;
+	}
+
+	body.js .hide-if-js {
+		display: none;
+	}
+
+	.cacap-row input {
+		padding: 8px;
+	}
 }
 
-p {
-	line-height: 1.6em;
-	margin-bottom: 11px;
-	font-family: $font; 
+body.cacap .button {
+	margin-top: 0;
 }
-
-a {
-	color: $link_color;
-}
-
-em { 
-	font-style: italic; 
-} 
-
-body.no-js .hide-if-no-js {
-	display: none;
-}
-
-body.js .hide-if-js {
-	display: none;
-}
-
-.cacap-row input { 
-	padding: 8px; 
-} 
-body.cacap .button { 
-	margin-top: 0; 
-} 
 /*
  *body.cacap .button,
  *body.cacap input[type="button"],
