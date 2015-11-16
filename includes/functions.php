@@ -180,6 +180,11 @@ function cacap_is_commons_profile() {
 		if ( ! bp_is_profile_component() ) {
 			$retval = true;
 		}
+
+		// Change Avatar, etc.
+		if ( bp_is_profile_component() && bp_current_action() && ! bp_is_current_action( 'edit' ) ) {
+			$retval = true;
+		}
 	}
 
 	return apply_filters( 'cacap_is_commons_profile', $retval );

@@ -26,6 +26,8 @@ class CACAP_Controller {
 		remove_filter( 'xprofile_data_value_before_save', 'xprofile_sanitize_data_value_before_save', 1, 2 );
 		remove_filter( 'xprofile_filtered_data_value_before_save', 'trim', 2 );
 		remove_filter( 'xprofile_get_field_data', 'wp_filter_kses', 1 );
+		remove_filter( 'bp_get_the_profile_field_value', 'esc_html', 8 );
+		remove_filter( 'bp_get_the_profile_field_value', 'wp_filter_kses', 8 );
 
 		add_action( 'xprofile_updated_profile', array( $this, 'save_profile_data' ) );
 
@@ -196,6 +198,10 @@ class CACAP_Controller {
 			$v
 		);
 
+		wp_localize_script( 'cacap', 'CACAP_Strings', array(
+			'clear_formatting_confirm' => __( 'Are you sure you want to remove all formatting from this field?', 'cacap' ),
+		) );
+
 		// enqueue CAC js for commons-profile pages
 		wp_enqueue_script( 'bp-dtheme-js' );
 	}
@@ -275,6 +281,12 @@ class CACAP_Controller {
 					continue;
 				}
 
+				// Content may have converted characters from
+				// JS juggling.
+				if ( is_scalar( $content ) ) {
+					$content = htmlspecialchars_decode( $content );
+				}
+
 				$key_a = explode( '-', $key );
 				$key_a_last = array_pop( $key_a );
 				if ( 0 === strpos( $key_a_last, 'newwidget' ) ) {
@@ -298,9 +310,6 @@ class CACAP_Controller {
 				$order_iterator = $order_iterator + 1;
 			}
 		}
-		// Add an activity item for this update.
-		$this->cacap_update_profile_activity( bp_loggedin_user_id() );
-
 		// Redirect to user profile after save.
 		// Stolen from http://buddypress.org/support/topic/how-to-redirect-users-to-their-profile-after-they-edit-their-profile/
 		global $bp;
