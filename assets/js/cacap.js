@@ -73,18 +73,19 @@ window.wp = window.wp || {};
 		 * Make a pop-up bubble first first-timers
 		 * to alert them of the changes. 
 		 */ 
-		function init_bubble() { 
-			if ($.cookie('MLAPortfolios') == null ){ 
+		init_bubble: function() {
+			if ($.cookie('MLAPortfolios') == null ){
 				// me want cookie, but no have cookie. 
 				$.cookie('MLAPortfolios', 1); // so me CREATE cookie. 
 				var modal_inst = $.remodal.lookup[$('[data-remodal-id=modal]').data('remodal')];
 
 				// open a modal
-				if ( modal_inst ) { 
+				if ( modal_inst ) {
 					modal_inst.open(); 
 				} 
 			} 
-		} 
+		},
+
 		/**
 		 * Initialize the sortable widgets.
 		 */
@@ -375,13 +376,13 @@ window.wp = window.wp || {};
 
 			for ( var i = 0; i < positions.length; i++ ) {
 				this_position_static_text = '';
-				if ( positions[i].title ) { 
+				if ( positions[i].title ) {
 					this_position_static_text += '<span class="cacap-positions-title">' + positions[i].title + '</span> ';
 				} 
-				if ( positions[i].department ) { 
+				if ( positions[i].department ) {
 					this_position_static_text += '<span class="cacap-positions-department">' + positions[i].department + '</span>';
 				} 
-				if ( positions[i].college ) { 
+				if ( positions[i].college ) {
 					this_position_static_text += '<span class="cacap-positions-college">' + positions[i].college + '</span>';
 				} 
 
@@ -434,7 +435,7 @@ window.wp = window.wp || {};
 			// Don't allow user to delete first position (there must 
 			// be at least one) but leave delete buttons on subsequent
 			// positions. 
-			if ( 1 == positions_count ) { 
+			if ( 1 == positions_count ) {
 				$positions_fields.find( '.cacap-delete-position' ).remove();
 			} 
 
@@ -523,6 +524,7 @@ window.wp = window.wp || {};
 					// Offset for the header
 					var currently_editing_position = $currently_editing.offset();
 					$.scrollTo( (currently_editing_position.top + $currently_editing.height() - 230) + 'px', 500 );
+				}
 
 				if ( currently_editing.length && jcw_id !== currently_editing && ! $jcw_target.closest( '.ui-autocomplete' ).length && ! $jcw_target.closest( '.hallolink-dialog' ).length ) {
 					process_clickaway(e); 
@@ -610,19 +612,19 @@ window.wp = window.wp || {};
 			return $jcw_target.closest( '.ui-autocomplete' ).length || $jcw_target.closest( '.hallolink-dialog' ).length;
 		},
 
-		function bind_submit_clicks() {
+		bind_submit_clicks: function() {
 			$( '#cacap-edit-form' ).submit( function( e ) {
 				if ( currently_editing.length ) {
 					e.preventDefault();
 				}
 			} );
-		}
+		},
 
-		function bind_enterkey() { 
-			$(document).keypress(function(e) { 
+		bind_enterkey: function() {
+			$(document).keypress(function(e) {
 				if(e.which == 13) { // enter has been pressed
 					var this_thing = e.currentTarget.activeElement; 
-					if ( this_thing.classList.contains('url') || this_thing.classList.contains('twitter_username') ) { 
+					if ( this_thing.classList.contains('url') || this_thing.classList.contains('twitter_username') ) {
 
 						e.preventDefault(); 
 						e.currentTarget.activeElement.blur(); 
@@ -630,7 +632,7 @@ window.wp = window.wp || {};
 					} 
 				} 
 			}); 
-		} 
+		},
 
 		/**
 		 * Mark a widget as "currently editing"
@@ -768,14 +770,14 @@ window.wp = window.wp || {};
 			$about_you_gloss.addClass( class_to_add );
 		},
 
-		function update_visibility_fields() { 
+		update_visibility_fields: function() {
 			/* jQuery hack to make visibility label change
 			 * when the user changes it */ 
 
-			$('.field-visibility-settings input[type=radio]').click(function(){ 
+			$('.field-visibility-settings input[type=radio]').click(function(){
 				$(this).parents('.field-visibility-settings').siblings('.field-visibility-settings-toggle').children('.current-visibility-level').html($(this).parent().find('span').text()); 
 			}); 
-		} 
+		},
 
 
 		// Init methods to run after document is ready
