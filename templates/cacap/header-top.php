@@ -8,7 +8,7 @@
 
 <?php do_action( 'cacap_header' ); ?>
 
-<div class="cacap-row cacap-hero-row<?php if ( cacap_is_commons_profile() ) : ?> stuck<?php endif ?>">
+<div class="cacap-row cacap-hero-row">
 	<div class="cacap-sticky-dummy">
 		<div class="cacap-hero">
 

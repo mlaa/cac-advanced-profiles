@@ -91,19 +91,19 @@ class CACAP_Controller {
 		}
 	}
 
-	/**
-	 * CACAP hijacks the entire top-level template, including header, sidebar, etc
-	 */
 	public function filter_top_level_template( $template ) {
 		if ( ! ( bp_displayed_user_id() && bp_is_current_component( 'profile' ) && ! bp_is_current_action( 'change-avatar' ) ) ) {
 			return $template;
-	}
+		}
 
 		if ( false === (bool) apply_filters( 'cacap_do_filter_top_level_template', true ) ) {
 			return $template;
 		}
 
-		$template = $this->locate_top_level_template();
+		// only use top-level template override in edit mode
+		if ( bp_is_user_profile_edit() ) {
+			$template = $this->locate_top_level_template();
+		}
 
 		return $template;
 	}
@@ -167,7 +167,7 @@ class CACAP_Controller {
 
 		wp_register_script( 'cacap-autogrow', CACAP_PLUGIN_URL . '/assets/js/autogrow.min.js', array( 'jquery' ), $v );
 		wp_register_script( 'cacap-waypoints', CACAP_PLUGIN_URL . '/lib/jquery.waypoints/waypoints.min.js', array( 'jquery' ), $v );
-		wp_register_script( 'cacap-waypoints-sticky', CACAP_PLUGIN_URL . '/lib/jquery.waypoints/waypoints-sticky.min.js', array( 'jquery', 'cacap-waypoints' ), $v );
+		//wp_register_script( 'cacap-waypoints-sticky', CACAP_PLUGIN_URL . '/lib/jquery.waypoints/waypoints-sticky.min.js', array( 'jquery', 'cacap-waypoints' ), $v );
 		wp_register_script( 'cacap-rangy', CACAP_PLUGIN_URL . '/lib/rangy/rangy-core.js', array( 'jquery' ), $v );
 		wp_register_script( 'cacap-hallo', CACAP_PLUGIN_URL . '/lib/hallo/hallo.js', array( 'jquery', 'jquery-ui-widget', 'jquery-ui-dialog', 'cacap-rangy' ), $v );
 		wp_register_script( 'cacap-scrollto', CACAP_PLUGIN_URL . '/lib/jquery.scrollTo/jquery.scrollTo.min.js', array( 'jquery' ), $v );
@@ -177,7 +177,7 @@ class CACAP_Controller {
 		$deps = array(
 			'jquery',
 			'cacap-waypoints',
-			'cacap-waypoints-sticky',
+			//'cacap-waypoints-sticky',
 			'cacap-remodal',
 		);
 

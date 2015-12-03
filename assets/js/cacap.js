@@ -505,6 +505,10 @@ window.wp = window.wp || {};
 			$.scrollTo( ( self.$w.offset().top - 230 ) + 'px', 500 );
 		},
 
+		unwarn: function(obj) {
+			obj.find('.cacap-error').html('');
+		},
+
 		bind_body_clicks: function() {
 			$( 'body' ).on( 'mousedown', function( e ) {
 				self.$jcw_target = $( e.target );
@@ -526,10 +530,10 @@ window.wp = window.wp || {};
 					$.scrollTo( (currently_editing_position.top + $currently_editing.height() - 230) + 'px', 500 );
 				}
 
-				if ( currently_editing.length && jcw_id !== currently_editing && ! $jcw_target.closest( '.ui-autocomplete' ).length && ! $jcw_target.closest( '.hallolink-dialog' ).length ) {
+				if ( self.currently_editing.length && jcw_id !== self.currently_editing && ! $jcw_target.closest( '.ui-autocomplete' ).length && ! $jcw_target.closest( '.hallolink-dialog' ).length ) {
 					process_clickaway(e); 
 				} else {
-					unwarn($jcw_half); 
+					self.unwarn(self.$jcw_half); 
 				}
 
 				// This is not a widget click, so we can bail
@@ -783,8 +787,8 @@ window.wp = window.wp || {};
 		// Init methods to run after document is ready
 		init: function() {
 			self = this;
-			self.init_bodyclass();
-			self.init_stickyheader();
+			//self.init_bodyclass();
+			//self.init_stickyheader();
 
 			self.$widget_list = $( '#cacap-widget-list' );
 
