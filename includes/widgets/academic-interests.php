@@ -123,7 +123,7 @@ class CACAP_Widget_Academic_Interests extends CACAP_Widget {
 
 		foreach ( $value as $term_taxonomy_id ) {
 			$term = get_term_by( 'term_taxonomy_id', $term_taxonomy_id, 'mla_academic_interests' );
-			$search_url = add_query_arg( array( 'academic_interests' => urlencode( $term_taxonomy_id ) ), bp_get_members_directory_permalink() );
+			$search_url = add_query_arg( array( 'academic_interests' => urlencode( $term->name ) ), bp_get_members_directory_permalink() );
 			$linked_values[] = '<a href="' . esc_url( $search_url ) . '" rel="nofollow">' . $term->name . '</a>';
 		}
 		return implode( ', ', $linked_values );
